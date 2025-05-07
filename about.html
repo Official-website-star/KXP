@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - KX Power</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        /* About页面特定样式 */
+        .about-content {
+            padding: 100px 5% 70px;
+            background-color: #fff;
+            margin-top: 70px; /* 添加顶部边距，补偿删除hero后的空间 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3, #003865);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            margin-bottom: 70px;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out;
+            animation-delay: 0.3s;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-section:last-child {
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 25px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s forwards ease-out;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.7s forwards ease-out, gradient-text 3s linear infinite;
+            animation-delay: 0s, 1s;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #003865;
+            animation: line-expand 1.5s forwards ease-out;
+            animation-delay: 0.5s;
+        }
+
+        .about-text p {
+            font-size: 19px; /* 增大文字大小与首页一致 */
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: left; /* 文字左对齐 */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s forwards ease-out;
+        }
+        
+        .about-text p:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+        
+        .about-text p:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            position: relative;
+            opacity: 0;
+            transform: translateY(5px); /* 减少初始Y轴偏移 */
+            animation: fadeInUp 0.8s forwards ease-out;
+            animation-delay: 0.8s;
+            z-index: 1;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: rgba(0, 56, 101, 0.1);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .about-image:hover::before {
+            top: 15px; /* 减少悬停时的偏移量 */
+            left: 15px; /* 减少悬停时的偏移量 */
+            background-color: rgba(0, 56, 101, 0.15); /* 降低背景色强度 */
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease; /* 缩短动画时间 */
+        }
+
+        .about-image:hover img {
+            transform: scale(1.02); /* 减少缩放比例 */
+        }
+
+        .about-investors {
+            padding: 80px 0; /* 修改水平内边距为0，让内容对齐页面边缘 */
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+            background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
+        }
+
+        .about-investors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.07), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+        }
+
+        .about-investors::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.05), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+
+        .investors-container {
+            width: 100%;
+            padding: 0 5%;
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .investors-title {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out;
+            animation-delay: 0.2s;
+            text-align: center;
+            position: relative;
+        }
+
+        .investors-title h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 15px;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+        }
+
+        @keyframes gradient-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .investors-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #003865;
+            animation: line-expand 1.5s forwards ease-out;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes line-expand {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .investors-title p {
+            font-size: 19px; /* 增大文字大小与首页一致 */
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s forwards ease-out;
+            animation-delay: 0.5s;
+        }
+
+        .investors-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin-top: 50px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        /* 添加背景光效果 */
+        .investors-logos::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 100px;
+            background: radial-gradient(ellipse at center, rgba(0, 56, 101, 0.08), transparent 70%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: pulse-light 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse-light {
+            0% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
+        .investor-logo {
+            flex: 0 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+            width: 250px;
+            opacity: 0;
+            transform: translateY(30px) rotateX(10deg);
+            animation: fadeInUp 0.7s forwards ease-out;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 56, 101, 0.05);
+            z-index: 2;
+        }
+
+        .investor-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        /* 投资者标志动画效果 */
+        @keyframes float {
+            0% { transform: translateY(0) rotateX(0deg); }
+            50% { transform: translateY(-8px) rotateX(2deg); }
+            100% { transform: translateY(0) rotateX(0deg); }
+        }
+
+        /* 增强3D效果 */
+        .investor-logo {
+            opacity: 0;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        /* 个性化标志动画设置 */
+        .investor-logo:nth-child(1) {
+            transform: translateY(30px) rotateX(10deg);
+        }
+
+        .investor-logo.scrolled:nth-child(1) {
+            animation: fadeInUp 0.7s forwards, float 6s infinite ease-in-out;
+            animation-delay: 0.4s, 1s;
+        }
+
+        .investor-logo:nth-child(2) {
+            transform: translateY(30px) rotateX(-5deg);
+        }
+
+        .investor-logo.scrolled:nth-child(2) {
+            animation: fadeInUp 0.7s forwards, float 6s infinite ease-in-out;
+            animation-delay: 0.6s, 1.5s;
+        }
+
+        .investor-logo:nth-child(3) {
+            transform: translateY(30px) rotateX(5deg);
+        }
+
+        .investor-logo.scrolled:nth-child(3) {
+            animation: fadeInUp 0.7s forwards, float 6s infinite ease-in-out;
+            animation-delay: 0.8s, 2s;
+        }
+
+        .investor-logo:hover {
+            transform: translateY(-15px) scale(1.05) rotateX(0deg) !important;
+            box-shadow: 0 20px 40px rgba(0, 56, 101, 0.12);
+            border-color: rgba(0, 56, 101, 0.1);
+            animation-play-state: paused;
+            z-index: 10;
+        }
+
+        .investor-logo:hover::before {
+            left: 100%;
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .investor-logo img {
+            max-width: 85%;
+            max-height: 85px;
+            object-fit: contain;
+            filter: grayscale(20%);
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
+        }
+
+        .investor-logo:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.08) translateZ(20px);
+        }
+
+        .partner-info {
+            max-width: 100%;
+            margin: 60px auto 0;
+            padding: 30px 35px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #003865;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s forwards ease-out;
+            animation-delay: 1s;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .partner-info::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #003865;
+            transition: all 0.4s ease;
+        }
+
+        .partner-info:hover {
+            box-shadow: 0 12px 30px rgba(0, 56, 101, 0.1);
+            transform: translateY(-5px);
+            border-left-width: 6px;
+        }
+
+        .partner-info:hover::before {
+            height: 100%;
+        }
+
+        .partner-info p {
+            font-size: 19px; /* 增大文字大小与首页一致 */
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: left; /* 文字左对齐 */
+            position: relative;
+            z-index: 1;
+        }
+
+        .partner-info strong {
+            color: #003865;
+            font-weight: 600;
+            display: inline-block;
+            position: relative;
+        }
+
+        .partner-info strong::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #003865;
+            transition: width 0.3s ease;
+        }
+
+        .partner-info:hover strong::after {
+            width: 100%;
+        }
+
+        .about-highlights {
+            padding: 100px 0 80px; /* 修改水平内边距为0，让内容对齐页面边缘 */
+            background-color: #fff;
+            position: relative;
+            background-image: linear-gradient(to bottom, #fff, #f8f9fa);
+            overflow: hidden;
+        }
+
+        .about-highlights::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.04), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+        
+        .about-highlights::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 150px;
+            height: 300px;
+            background: linear-gradient(to right, transparent, rgba(0, 56, 101, 0.03));
+            z-index: 1;
+            transform: translateY(-50%);
+            animation: pulse-float 10s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse-float {
+            0% {
+                transform: translateY(-50%) translateX(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-45%) translateX(-10px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-50%) translateX(0);
+                opacity: 0.5;
+            }
+        }
+
+        .highlights-container {
+            width: 100%;
+            padding: 0 5%;
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .highlights-title {
+            text-align: center;
+            margin-bottom: 70px;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out;
+            animation-delay: 0.2s;
+        }
+
+        .highlights-title h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 15px;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+        }
+
+        .highlights-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #003865;
+            animation: line-expand 1.5s forwards ease-out;
+            animation-delay: 0.8s;
+        }
+
+        .highlights-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between; /* 修改为两端对齐 */
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        /* 添加背景光效果 */
+        .highlights-cards::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 100px;
+            background: radial-gradient(ellipse at center, rgba(0, 56, 101, 0.05), transparent 70%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(20px);
+            opacity: 0.5;
+            animation: pulse-light 7s infinite alternate ease-in-out;
+        }
+
+        .highlight-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 48%; /* 调整宽度以适应两端对齐 */
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 4px solid #003865;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.7s forwards ease-out;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+        
+        .highlight-card:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .highlight-card:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 56, 101, 0.03);
+            z-index: -1;
+            transition: width 0.4s ease;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 56, 101, 0.15);
+            border-left-width: 6px;
+        }
+
+        .highlight-card:hover::before {
+            width: 100%;
+        }
+        
+        .highlight-card:hover::after {
+            left: 100%;
+            animation: shine 1.5s;
+        }
+
+        .highlight-card h3 {
+            font-size: 22px;
+            color: #003865;
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 12px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .highlight-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #003865;
+            transition: width 0.4s ease, background-color 0.4s ease;
+        }
+        
+        .highlight-card:hover h3 {
+            background-position: right center;
+        }
+        
+        .highlight-card:hover h3::after {
+            width: 60px;
+            background-color: #0066b3;
+        }
+
+        .highlight-card li {
+            font-size: 17px; /* 增大文字大小 */
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: left; /* 文字左对齐 */
+            position: relative;
+            transition: all 0.3s ease;
+            padding-left: 5px;
+        }
+
+        .highlight-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-card li::marker {
+            color: #003865;
+        }
+        
+        .highlight-card:hover li {
+            transform: translateX(3px);
+        }
+        
+        .highlight-card li:hover {
+            color: #003865;
+            transform: translateX(5px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(5px); /* 减少动画中的Y轴偏移 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 992px) {            
+            .about-content,
+            .about-investors,
+            .about-highlights {
+                padding: 70px 5%;
+            }
+            
+            .investors-container,
+            .highlights-container {
+                padding: 0;
+            }
+            
+            .highlight-card {
+                max-width: 100%;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .about-image {
+                width: 100%;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-text h2, 
+            .investors-title h2,
+            .highlights-title h2 {
+                font-size: 28px;
+            }
+
+            .about-content {
+                padding: 50px 4%;
+            }
+            
+            .about-investors,
+            .about-highlights {
+                padding: 50px 4%;
+            }
+            
+            .investors-container,
+            .highlights-container {
+                padding: 0;
+            }
+
+            .about-text p, 
+            .investors-title p,
+            .partner-info p,
+            .highlight-card li {
+                font-size: 17px;
+                text-align: left;
+            }
+
+            .investors-logos {
+                gap: 30px;
+            }
+
+            .investor-logo {
+                width: 150px;
+                height: 80px;
+                padding: 15px;
+            }
+            
+            .highlight-card {
+                padding: 25px;
+            }
+        }
+
+        /* Strategic Partners 新布局样式 */
+        .partners-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .partner-card {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 56, 101, 0.08);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 56, 101, 0.05);
+            padding: 0;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 56, 101, 0.12);
+        }
+
+        .partner-logo {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9fafc;
+            width: 220px;
+            height: 100%;
+            border-right: 1px solid rgba(0, 56, 101, 0.05);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 70px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .partner-card:hover .partner-logo img {
+            transform: scale(1.05);
+        }
+
+        .partner-description {
+            padding: 25px 30px;
+            flex: 1;
+        }
+
+        .partner-description h3 {
+            color: #003865;
+            font-size: 20px;
+            margin: 0 0 10px;
+            font-family: "Georgia", serif;
+        }
+
+        .partner-description p {
+            font-size: 16px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+            font-family: "Calibri", sans-serif;
+        }
+
+        .partner-description p strong {
+            color: #0066b3;
+        }
+
+        .main-partner {
+            width: 100%;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 992px) {
+            .partner-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partner-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .partner-logo {
+                width: 100%;
+                padding: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 56, 101, 0.05);
+            }
+            
+            .partner-description {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-content">
+        <div class="about-container">
+            <div class="about-section">
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>KX Power is a well-established, asset management firm specialising in the origination, development, investment and management of real, renewable energy and power generation assets. With deep knowledge of the complete value chain and entire lifecycle of renewable energy projects, KXP's local teams have successfully developed, financed, built and operated energy storage assets.</p>
+                    <p>With this strong foundation and an ambition for growth, KXP have coalesced a strong pipeline for the development of future energy assets.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/2. About us/about_01.jpg" alt="KX Power Team">
+                </div>
+            </div>
+
+            <div class="about-section">
+                <div class="about-image">
+                    <img src="assets/2. About us/about_02.jpg" alt="Renewable Energy Solutions">
+                </div>
+                <div class="about-text">
+                    <h2>Our Mission</h2>
+                    <p>KXP is dedicated to the transition to a low-carbon energy ecosystem. With its expertise and resources in green technology, digitalisation, power trading/optimisation and project finance, KXP's vision is to become the preeminent renewable energy sponsor.</p>
+                    <p>By leveraging our deep industry expertise and innovative approaches, we're committed to developing sustainable energy solutions that benefit both our clients and the planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-investors">
+        <div class="investors-container">
+            <div class="investors-title">
+                <h2>Our Strategic Partners</h2>
+                <p>KX Power has established strong partnerships with leading global financial institutions, enhancing our ability to deliver innovative energy solutions at scale.</p>
+            </div>
+            
+            <div class="partners-showcase">
+                <!-- 合作伙伴卡片布局 -->
+                <div class="partner-card main-partner">
+                    <div class="partner-logo">
+                        <img src="assets/2. About us/investeor_BlackRock Logo.png" alt="BlackRock Logo">
+                    </div>
+                    <div class="partner-description">
+                        <h3>BlackRock</h3>
+                        <p><strong>Joint Venture partnership with the world's largest AMC</strong></p>
+                        <p>BlackRock commits an initial £200 million in the UK, while further expanding into wider Europe.</p>
+                    </div>
+                </div>
+                
+                <div class="partner-grid">
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                            <img src="assets/2. About us/investeor_ONE Funds AG Logo.png" alt="ONE Funds AG Logo">
+                        </div>
+                        <div class="partner-description">
+                            <h3>ONE Funds</h3>
+                            <p>Strategic investment partner supporting our renewable energy projects.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-card">
+                        <div class="partner-logo">
+                            <img src="assets/2. About us/investeor_Santander Logo.png" alt="Santander Logo">
+                        </div>
+                        <div class="partner-description">
+                            <h3>Santander</h3>
+                            <p>Financial partner providing capital solutions for our energy infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-highlights">
+        <div class="highlights-container">
+            <div class="highlights-title">
+                <h2>Our Strengths</h2>
+            </div>
+            <div class="highlights-cards">
+                <div class="highlight-card">
+                    <h3>A Top Performer in the UK BESS Market</h3>
+                    <ul>
+                        <li>We achieve a 30-40% price advantage over our competitors from our Tier 1 suppliers.</li>
+                        <li>Project lenders strongly support KX Power due to our consistent high performance; in fact, while several other UK BESS competitors defaulted in 2024, KX Power continued to deliver.</li>
+                        <li>KX Power avoids delays and bankrupt EPC contractors via separating battery procurement as well as robust tendering processes which sift out insufficiently staffed/capitalized EPC providers.</li>
+                        <li>KX Power's unique inhouse battery expertise employs ingenious warranty mechanisms.</li>
+                    </ul>
+                </div>
+                <div class="highlight-card">
+                    <h3>A Global O&M Services Provider</h3>
+                    <ul>
+                        <li>KX Power's O&M services spread across the UK, the US, Europe, Middle East and South Africa.</li>
+                        <li>Our comprehensive asset management approach ensures optimal performance throughout the entire lifecycle of renewable energy assets.</li>
+                        <li>We leverage advanced monitoring systems and predictive maintenance technologies to maximize efficiency and returns.</li>
+                        <li>Our global presence allows us to implement best practices from diverse markets and regulatory environments.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>St. Vincent House, 30 Orange Street, London, WC2H 7HF</span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:info@kxpower.co.uk" class="footer-email">info@kxpower.co.uk</a></span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+44 (0)207 459 4352</span>
+                </p>
+            </div>
+            
+            <div class="footer-section logo-section">
+                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KX Power Limited. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="#" class="privacy-policy" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="https://www.linkedin.com/company/kx-power-limited/?originalSubdomain=uk" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-modal-body">
+                <h2>Privacy Policy</h2>
+                
+                <p class="policy-intro">KX Power takes your privacy seriously. That is why we will only use your personal information to provide you with the products and services you have requested, as well as to administer your account. We will not sell or share your information with third-parties you grant us explicit permission to do so, and we will never use your personal data for any reason other than the reasons described within this policy.</p>
+                
+                <h3>About our privacy policy</h3>
+                <p>Our privacy policy outlines your relationship with our company and explains in detail how we use the information that you provide us with.</p>
+                
+                <h3>About KX Power</h3>
+                <p>KX Power is the trading name of KX Power Limited, which is registered in England and Wales and registered with the UK's Information Commissioner's Office under the Data Protection Act 2018. We encourage you to get in touch with any questions you may have about.</p>
+                
+                <h3>You can reach us by:</h3>
+                <ul>
+                    <li><strong>Post:</strong> 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom</li>
+                    <li><strong>Telephone:</strong> +44 (0)207 519 6865</li>
+                    <li><strong>Email:</strong> <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a></li>
+                    <li><strong>Website:</strong> <a href="http://www.kxpower.co.uk" target="_blank">www.kxpower.co.uk</a></li>
+                </ul>
+                
+                <h3>Changing your preferences</h3>
+                <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
+                
+                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.about-section, .investor-logo, .highlight-card, .partner-info, .highlights-title, .investors-title');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('scrolled');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('scrolled');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // 初始运行一次，确保页面加载时可见元素会显示
+            handleScrollAnimation();
+            
+            // 增强投资者logo卡片的3D鼠标跟随效果
+            const investorLogos = document.querySelectorAll('.investor-logo');
+            
+            investorLogos.forEach(logo => {
+                logo.addEventListener('mousemove', function(e) {
+                    if (window.innerWidth > 992) { // 仅在大屏幕上应用此效果
+                        const rect = logo.getBoundingClientRect();
+                        const x = e.clientX - rect.left; // 鼠标在卡片内的X位置
+                        const y = e.clientY - rect.top;  // 鼠标在卡片内的Y位置
+                        
+                        // 计算鼠标位置相对于卡片中心的偏移
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const deltaX = (x - centerX) / centerX;
+                        const deltaY = (y - centerY) / centerY;
+                        
+                        // 根据鼠标位置应用微妙的3D倾斜效果和光效
+                        logo.style.transform = `perspective(1000px) rotateY(${deltaX * 10}deg) rotateX(${-deltaY * 10}deg) translateZ(10px) scale(1.05)`;
+                        logo.style.zIndex = '10';
+                        
+                        // 图像更强的偏移
+                        const logoImg = logo.querySelector('img');
+                        if (logoImg) {
+                            logoImg.style.transform = `scale(1.08) translateZ(20px) translateX(${deltaX * 10}px) translateY(${deltaY * 10}px)`;
+                        }
+                        
+                        // 添加跟随鼠标的光影效果
+                        const light = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent 80%)`;
+                        logo.style.backgroundImage = light;
+                    }
+                });
+                
+                // 鼠标离开时恢复原状
+                logo.addEventListener('mouseleave', function() {
+                    logo.style.transform = '';
+                    logo.style.zIndex = '2';
+                    logo.style.backgroundImage = '';
+                    
+                    const logoImg = logo.querySelector('img');
+                    if (logoImg) {
+                        logoImg.style.transform = 'translateZ(10px)';
+                    }
+                    
+                    // 确保悬停效果在CSS中应用
+                    setTimeout(() => {
+                        logo.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    }, 50);
+                });
+            });
+            
+            // 为合作伙伴信息卡片添加悬停效果
+            const partnerInfo = document.querySelector('.partner-info');
+            if (partnerInfo) {
+                partnerInfo.addEventListener('mouseenter', function() {
+                    const strongText = partnerInfo.querySelector('strong');
+                    if (strongText) {
+                        strongText.style.color = '#0066b3';
+                        strongText.style.transition = 'all 0.3s ease';
+                    }
+                });
+                
+                partnerInfo.addEventListener('mouseleave', function() {
+                    const strongText = partnerInfo.querySelector('strong');
+                    if (strongText) {
+                        strongText.style.color = '#003865';
+                    }
+                });
+            }
+            
+            // 为Our Strengths卡片添加3D交互效果
+            const highlightCards = document.querySelectorAll('.highlight-card');
+            
+            highlightCards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    if (window.innerWidth > 992) { // 仅在大屏幕上应用此效果
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left; // 鼠标在卡片内的X位置
+                        const y = e.clientY - rect.top;  // 鼠标在卡片内的Y位置
+                        
+                        // 计算鼠标位置相对于卡片中心的偏移
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const deltaX = (x - centerX) / centerX;
+                        const deltaY = (y - centerY) / centerY;
+                        
+                        // 根据鼠标位置应用微妙的倾斜效果
+                        card.style.transform = `perspective(1000px) rotateY(${deltaX * 3}deg) rotateX(${-deltaY * 3}deg) translateY(-10px) scale(1.02)`;
+                        card.style.zIndex = '10';
+                        
+                        // 添加跟随鼠标的光影效果
+                        const light = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.1), transparent 80%)`;
+                        card.style.backgroundImage = light;
+                    }
+                });
+                
+                // 鼠标离开时恢复原状
+                card.addEventListener('mouseleave', function() {
+                    card.style.transform = '';
+                    card.style.zIndex = '1';
+                    card.style.backgroundImage = '';
+                    // 确保悬停效果在CSS中应用
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    }, 50);
+                });
+            });
+            
+            // 添加标题动画效果
+            const titles = document.querySelectorAll('.investors-title h2, .highlights-title h2, .about-text h2');
+            if(titles.length > 0) {
+                titles.forEach(title => {
+                    window.addEventListener('scroll', function() {
+                        if(elementInView(title, 1.5)) {
+                            title.style.opacity = '1';
+                            title.style.transform = 'translateY(0)';
+                        }
+                    });
+                });
+            }
+            
+            // 为图片添加更轻微的视差效果
+            const aboutImages = document.querySelectorAll('.about-image');
+            if(aboutImages.length > 0) {
+                window.addEventListener('scroll', function() {
+                    aboutImages.forEach(img => {
+                        if(elementInView(img, 1.2)) {
+                            const scrollTop = window.pageYOffset;
+                            const imgTop = img.getBoundingClientRect().top + scrollTop;
+                            const parallaxOffset = (scrollTop - imgTop) * 0.05; // 减少视差系数
+                            
+                            if(Math.abs(parallaxOffset) < 20) { // 进一步限制最大偏移量
+                                img.querySelector('img').style.transform = `translateY(${parallaxOffset}px)`;
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

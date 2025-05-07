@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESS & Solar Solutions - KX Power</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        /* BESS & Solar页面特定样式 */
+        .bess-title-section {
+            margin-top: 70px;
+            padding: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .bess-intro {
+            padding: 80px 5% 60px;
+            background-color: #fff;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bess-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3, #003865);
+        }
+        
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid #e1eef9;
+        }
+        
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 56, 101, 0.03), transparent 70%);
+            z-index: 0;
+        }
+        
+        .intro-container h2 {
+            font-size: 34px;
+            color: #003865;
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .intro-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .intro-text {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 服务列表部分的美化与动画 */
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px auto 0;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* 最后一行居中显示 */
+        .service-row-last {
+            grid-column: 1 / span 3;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        
+        .service-row-last .service-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            min-width: 220px;
+            width: auto;
+        }
+        
+        .service-row-last .service-item:nth-child(1) { 
+            animation-delay: 0.4s; 
+        }
+        
+        .service-row-last .service-item:nth-child(2) { 
+            animation-delay: 0.45s; 
+        }
+        
+        .service-item {
+            background-color: #fff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 56, 101, 0.08);
+            color: #003865;
+            font-weight: normal;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-family: "Georgia", serif;
+            border: 1px solid #e1eef9;
+            position: relative;
+            overflow: hidden;
+            justify-content: center;
+        }
+        
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 56, 101, 0.05), transparent);
+            z-index: -1;
+        }
+        
+        .service-item i {
+            color: #0066b3;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 56, 101, 0.12);
+            background-color: #f8fbff;
+        }
+        
+        .service-item:hover i {
+            transform: scale(1.2);
+            color: #003865;
+        }
+        
+        /* 统一服务项动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        /* 错开各个服务项目的动画时间 */
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.15s; }
+        .service-item:nth-child(3) { animation-delay: 0.2s; }
+        .service-item:nth-child(4) { animation-delay: 0.25s; }
+        .service-item:nth-child(5) { animation-delay: 0.3s; }
+        .service-item:nth-child(6) { animation-delay: 0.35s; }
+        
+        /* 第三行的两个服务项居中显示 */
+        .service-item:nth-child(7) {
+            grid-column: 1 / 2;
+            justify-self: flex-end;
+        }
+        
+        .service-item:nth-child(8) {
+            grid-column: 3 / 4;
+            justify-self: flex-start;
+        }
+        
+        @media (max-width: 992px) {
+            .service-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 650px;
+            }
+            
+            .service-row-last {
+                grid-column: 1 / span 2;
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                max-width: 500px;
+            }
+            
+            .service-item {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .service-row-last {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .service-row-last .service-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                max-width: 300px;
+            }
+            
+            .service-item {
+                width: 100%;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .service-row-last {
+                grid-column: 1;
+            }
+        }
+        
+        /* 项目展示部分 */
+        .projects-section {
+            padding: 45px 0 70px;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .projects-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.07), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+        }
+        
+        .projects-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.05), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        .projects-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        
+        .section-heading h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        /* 项目卡片样式 - 修改为截图风格 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .project-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 56, 101, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            border: 1px solid #e1eef9;
+            width: 100%;
+            max-width: 1300px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 56, 101, 0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            position: relative;
+            z-index: 2;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .project-title {
+            font-size: 28px;
+            font-weight: normal;
+            color: #003865;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            font-family: "Georgia", serif;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: left;
+        }
+        
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            transform: none;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 90%;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .project-meta-item i {
+            color: #0066b3;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+        
+        .spec-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: left;
+        }
+        
+        .spec-label {
+            font-size: 15px;
+            color: #666;
+            font-family: "Georgia", serif;
+        }
+        
+        .spec-value {
+            font-size: 20px;
+            font-weight: normal;
+            color: #003865;
+            font-family: "Georgia", serif;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: flex-start;
+        }
+        
+        .project-tag {
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background-color: rgba(230, 240, 249, 0.6);
+            color: #0066b3;
+            font-weight: normal;
+            font-family: "Georgia", serif;
+            box-shadow: none;
+            border: 1px solid rgba(0, 102, 179, 0.1);
+        }
+        
+        .project-tag:hover {
+            background-color: rgba(230, 240, 249, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        /* 响应式调整 */
+        @media (min-width: 1800px) {
+            .projects-grid {
+                max-width: 1300px;
+            }
+            
+            .projects-container {
+                max-width: 1300px;
+            }
+            
+            .project-image {
+                min-height: 450px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-image {
+                min-height: 350px;
+            }
+            
+            .project-content {
+                padding: 40px;
+            }
+            
+            .project-title {
+                font-size: 24px;
+            }
+            
+            .project-meta {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                padding: 0 3%;
+            }
+            
+            .project-content {
+                padding: 30px;
+            }
+            
+            .project-image {
+                min-height: 300px;
+            }
+            
+            .project-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            
+            .project-meta {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-grid {
+                padding: 0 2%;
+            }
+            
+            .project-content {
+                padding: 25px;
+            }
+            
+            .project-image {
+                min-height: 250px;
+            }
+            
+            .project-title {
+                font-size: 20px;
+            }
+            
+            .project-meta-item i {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .project-meta-item span {
+                font-size: 15px;
+            }
+        }
+
+        /* 返回顶部按钮功能 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #003865;
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: #0066b3;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        /* 隐私政策弹窗样式 */
+        .privacy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .privacy-modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 50px auto;
+            max-width: 800px;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .privacy-modal-body {
+            padding: 30px;
+        }
+        
+        .privacy-modal-body h2 {
+            color: #003865;
+            margin-bottom: 20px;
+            font-family: "Georgia", serif;
+        }
+        
+        .privacy-modal-body h3 {
+            color: #0066b3;
+            margin: 25px 0 10px;
+            font-size: 20px;
+            font-family: "Georgia", serif;
+        }
+        
+        .privacy-modal-body p,
+        .privacy-modal-body li {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-family: "Calibri", sans-serif;
+        }
+
+        /* 返回Solutions主页按钮样式 */
+        .back-to-solutions {
+            display: flex;
+            justify-content: center;
+            margin: 50px auto 0;
+            padding-bottom: 20px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #003865;
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: "Calibri", sans-serif;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 56, 101, 0.15);
+        }
+        
+        .back-btn:hover {
+            background-color: #0066b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 56, 101, 0.2);
+        }
+        
+        .back-btn i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="solutions.html" class="active">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 标题部分 -->
+    <section class="bess-title-section">
+        <!-- 空部分，保持与其他页面结构一致 -->
+    </section>
+
+    <!-- BESS & Solar介绍部分 -->
+    <section class="bess-intro">
+        <div class="intro-container">
+            <h2>BESS & Solar Solutions</h2>
+            <p class="intro-text">KX Power is a leading developer and asset manager of utility-scale battery energy storage (BESS) and solar projects across Europe, the Middle East and Africa. Power networks and electricity markets are evolving rapidly: to meet net-zero-by-2050 targets in the UK, the EU, GCC, African and many other jurisdictions, intermittent wind and solar will need to account for almost 60% of generation by 2030. Utility-scale battery storage is therefore critical to enabling renewables to connect to — and stabilise — the grid.</p>
+            <p class="intro-text">We take a truly holistic approach to every project, from initial concept through to handover and beyond, including:</p>
+            
+            <!-- 服务列表 -->
+            <div class="service-list">
+                <div class="service-item">
+                    <i class="fas fa-drafting-compass"></i>
+                    <span>Design & engineering</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Project management</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Civil works & foundations</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Electrical installation</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>SCADA integration</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Commissioning & testing</span>
+                </div>
+                <div class="service-row-last">
+                    <div class="service-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Power trading and revenue optimization</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Operation & maintenance</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="intro-text" style="margin-top: 30px;">Our deep expertise and demonstrable track record in developing, constructing, operating and optimising energy storage and solar assets makes KX Power one of the most trusted partners in the energy transition. Whether it's enhancing grid flexibility, maximising revenue streams or securing grid connections for new renewable capacity, we deliver end-to-end solutions that de-risk your investment and accelerate your journey to net zero.</p>
+        </div>
+    </section>
+
+    <!-- 项目展示部分 -->
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="section-heading">
+                <h2>Featured Projects</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- 项目1: Mannington -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/4. Solutions/BESS/项目1 BESS_Mannington_01.png" alt="BESS Project Mannington">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">BESS Project Mannington</h3>
+                        
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-battery-full"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Capacity</span>
+                                    <span class="spec-value">35MW / 70MWh</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Location</span>
+                                    <span class="spec-value">Swindon, England, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">Battery Storage</span>
+                            <span class="project-tag">Grid Stabilization</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2: Immingham -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/4. Solutions/BESS/项目2 ：BESS_Immingham_02.png" alt="BESS Project Immingham">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">BESS Project Immingham</h3>
+                        
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-battery-full"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Capacity</span>
+                                    <span class="spec-value">80MW / 160MWh</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Location</span>
+                                    <span class="spec-value">Stallingborough, England, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">Battery Storage</span>
+                            <span class="project-tag">Frequency Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3: Ayr -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/4. Solutions/BESS/项目3：BESS Project Ayr-01.png" alt="BESS Project Ayr">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">BESS Project Ayr</h3>
+                        
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-battery-full"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Capacity</span>
+                                    <span class="spec-value">150MW / 300MWh</span>
+                                </div>
+                            </div>
+                            
+                            <div class="project-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Location</span>
+                                    <span class="spec-value">Ayrshire, Scotland, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">Battery Storage</span>
+                            <span class="project-tag">Energy Arbitrage</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目4: South Africa O&M -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/4. Solutions/BESS/项目4：O&M_South Africa.png" alt="South Africa O&M Services">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">South Africa O&M Services</h3>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-cogs"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Service Type</span>
+                                    <span class="spec-value">O&M Services</span>
+                                </div>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Location</span>
+                                    <span class="spec-value">South Africa</span>
+                                </div>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-info-circle"></i>
+                                <div class="spec-details">
+                                    <span class="spec-label">Project Size</span>
+                                    <span class="spec-value">1000+ MWh site</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">O&M Services</span>
+                            <span class="project-tag">Performance Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 返回Solutions主页按钮 -->
+            <div class="back-to-solutions">
+                <a href="solutions.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Solutions</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>St. Vincent House, 30 Orange Street, London, WC2H 7HF</span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:info@kxpower.co.uk" class="footer-email">info@kxpower.co.uk</a></span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+44 (0)207 459 4352</span>
+                </p>
+            </div>
+            
+            <div class="footer-section logo-section">
+                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KX Power Limited. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="#" class="privacy-policy" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="https://www.linkedin.com/company/kx-power-limited/?originalSubdomain=uk" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Privacy Policy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-modal-body">
+                <h2>Privacy Policy</h2>
+                
+                <p class="policy-intro">KX Power takes your privacy seriously. That is why we will only use your personal information to provide you with the products and services you have requested, as well as to administer your account. We will not sell or share your information with third-parties you grant us explicit permission to do so, and we will never use your personal data for any reason other than the reasons described within this policy.</p>
+                
+                <h3>About our privacy policy</h3>
+                <p>Our privacy policy outlines your relationship with our company and explains in detail how we use the information that you provide us with.</p>
+                
+                <h3>About KX Power</h3>
+                <p>KX Power is the trading name of KX Power Limited, which is registered in England and Wales and registered with the UK's Information Commissioner's Office under the Data Protection Act 2018. We encourage you to get in touch with any questions you may have about.</p>
+                
+                <h3>You can reach us by:</h3>
+                <ul>
+                    <li><strong>Post:</strong> 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom</li>
+                    <li><strong>Telephone:</strong> +44 (0)207 519 6865</li>
+                    <li><strong>Email:</strong> <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a></li>
+                    <li><strong>Website:</strong> <a href="http://www.kxpower.co.uk" target="_blank">www.kxpower.co.uk</a></li>
+                </ul>
+                
+                <h3>Changing your preferences</h3>
+                <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
+                
+                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceItems = document.querySelectorAll('.service-item');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            // 初始化服务项目的动画效果
+            serviceItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.3s ease';
+                item.style.transitionDelay = `${0.1 + index * 0.08}s`;
+            });
+            
+            // 初始化项目卡片的动画效果
+            projectCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.4s ease';
+                card.style.transitionDelay = `${0.1 + index * 0.1}s`;
+            });
+            
+            // 检查元素是否在视口内
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            };
+            
+            // 添加滚动动画和可见性检查
+            const handleScrollAnimation = () => {
+                serviceItems.forEach((item) => {
+                    if (isElementInViewport(item) && !item.classList.contains('visible')) {
+                        item.classList.add('visible');
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                projectCards.forEach((card) => {
+                    if (isElementInViewport(card) && !card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // 页面加载时执行一次
+            setTimeout(handleScrollAnimation, 100);
+            
+            // 返回顶部按钮功能
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // 监听滚动事件来显示/隐藏按钮
+            window.addEventListener('scroll', function() {
+                // 当滚动超过300px时显示按钮
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // 点击按钮返回顶部
+            backToTopBtn.addEventListener('click', function() {
+                // 使用平滑滚动返回顶部
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 隐私政策弹窗功能
+            const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+            const privacyModal = document.getElementById('privacyModal');
+            const closePrivacyModal = privacyModal.querySelector('.close-modal');
+            
+            // 点击隐私政策链接
+            privacyPolicyLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                privacyModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+            
+            // 点击关闭按钮
+            closePrivacyModal.addEventListener('click', function() {
+                privacyModal.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+            });
+            
+            // 点击模态框背景部分关闭
+            privacyModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    privacyModal.style.display = 'none';
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

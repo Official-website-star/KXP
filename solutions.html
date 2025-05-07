@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - KX Power</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        /* Solutions页面特定样式 */
+        .solutions-title-section {
+            margin-top: 70px;
+            padding: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .solutions-intro {
+            padding: 80px 5% 60px;
+            background-color: #fff;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solutions-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3, #003865);
+        }
+        
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid #e1eef9;
+        }
+        
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 56, 101, 0.03), transparent 70%);
+            z-index: 0;
+        }
+        
+        .intro-container h2 {
+            font-size: 34px;
+            color: #003865;
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .intro-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .intro-text {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 主图展示部分 */
+        .solutions-image {
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            margin: 30px auto 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 56, 101, 0.15);
+            position: relative;
+            z-index: 1;
+            transition: all 0.5s ease;
+            border: 1px solid #e1eef9;
+        }
+        
+        .solutions-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 56, 101, 0.05), rgba(0, 102, 179, 0.02));
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .solutions-image:hover::before {
+            opacity: 1;
+        }
+        
+        .solutions-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s ease;
+            transform-origin: center;
+            animation: macLockscreenEffect 15s infinite ease-in-out;
+        }
+        
+        .solutions-image:hover img {
+            animation-duration: 8s;
+        }
+        
+        @keyframes macLockscreenEffect {
+            0% {
+                transform: scale(1);
+                filter: brightness(1) saturate(1);
+            }
+            50% {
+                transform: scale(1.02) translateY(-5px);
+                filter: brightness(1.05) saturate(1.05);
+            }
+            100% {
+                transform: scale(1);
+                filter: brightness(1) saturate(1);
+            }
+        }
+        
+        @keyframes subtle-pulse {
+            0% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+        
+        /* 云彩/光效果 */
+        .cloud-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            animation: subtle-pulse 20s infinite linear;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        /* 风力效果叠加层 - 已不再使用 */
+        .wind-effect {
+            display: none;
+        }
+        
+        @keyframes moveWind {
+            0% {
+                transform: translateX(-100%) translateY(-20%) rotate(-5deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(20%) rotate(5deg);
+            }
+        }
+        
+        /* 解决方案列表部分 */
+        .solutions-section {
+            padding: 45px 5% 70px;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solutions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.07), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+        }
+        
+        .solutions-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.05), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        .solutions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        /* 解决方案卡片设计 */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .solution-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid #e1eef9;
+        }
+        
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 56, 101, 0.15);
+        }
+        
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+        
+        .solution-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .solution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .solution-card:hover .solution-image img {
+            transform: scale(1.05);
+        }
+        
+        .solution-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .solution-title {
+            font-size: 22px;
+            font-weight: normal;
+            color: #003865;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-family: "Georgia", serif;
+        }
+        
+        .solution-excerpt {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-family: "Calibri", sans-serif;
+            text-align: left;
+        }
+        
+        .learn-more-link {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0066b3;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: "Georgia", serif;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .learn-more-link i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .learn-more-link:hover {
+            color: #003865;
+        }
+        
+        .learn-more-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .solutions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 28px;
+            }
+            
+            .intro-text {
+                font-size: 17px;
+            }
+            
+            .solutions-image {
+                height: 350px;
+            }
+            
+            .solution-title {
+                font-size: 20px;
+            }
+            
+            .intro-container {
+                padding: 30px;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .solutions-intro {
+                padding: 70px 5% 40px;
+            }
+            
+            .intro-container {
+                padding: 25px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 26px;
+            }
+            
+            .intro-text {
+                font-size: 16px;
+                text-align: left;
+            }
+            
+            .solutions-image {
+                height: 280px;
+            }
+            
+            .solutions-intro,
+            .solutions-section {
+                padding: 40px 5%;
+            }
+            
+            .solution-title {
+                font-size: 19px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .solutions-intro {
+                padding: 60px 5% 30px;
+            }
+            
+            .intro-container {
+                padding: 20px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 24px;
+            }
+            
+            .solutions-grid {
+                gap: 20px;
+            }
+            
+            .solution-title {
+                font-size: 18px;
+            }
+            
+            .solutions-image {
+                height: 220px;
+            }
+        }
+
+        /* 返回顶部按钮功能 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #003865;
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: #0066b3;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="solutions.html" class="active">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 标题部分 -->
+    <section class="solutions-title-section">
+        <!-- 空部分，保持与其他页面结构一致 -->
+    </section>
+
+    <!-- 解决方案介绍部分 -->
+    <section class="solutions-intro">
+        <div class="intro-container">
+            <h2>Integrated Energy Solutions</h2>
+            <p class="intro-text">KX Power delivers fully integrated energy infrastructure solutions across multiple regions, seamlessly combining BESS, solar PV, and mission-critical systems under a comprehensive turnkey model. Our end-to-end approach — from feasibility and design to construction, integration, and optimized operations — enables clients to mitigate risks, maximize energy returns, and move confidently toward resilience and net zero goals.</p>
+            <p class="intro-text">Whether you're connecting large-scale renewables, enhancing grid flexibility or ensuring 24/7 uptime for hyperscale facilities, KX Power's holistic approach — backed by deep regional expertise and a proven track record — means you have one trusted partner for everything from BESS & Solar to data-center power.</p>
+            
+            <div class="solutions-image">
+                <img src="assets/4. Solutions/储能-1.jpg" alt="KX Power Energy Solutions">
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案列表部分 -->
+    <section class="solutions-section">
+        <div class="solutions-container">
+            <div class="section-heading">
+                <h2>Our Solutions</h2>
+            </div>
+            
+            <div class="solutions-grid">
+                <!-- 解决方案1: BESS & Solar -->
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <img src="assets/4. Solutions/BESS/项目1 BESS_Mannington_01.png" alt="BESS & Solar Solutions">
+                    </div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">BESS & Solar</h3>
+                        <p class="solution-excerpt">KX Power is a leading developer and asset manager of utility-scale battery energy storage (BESS) and solar projects across Europe, the Middle East and Africa. Our expertise spans the entire project lifecycle from initial concept through to operation and beyond.</p>
+                        <a href="solutions-bess.html" class="learn-more-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 解决方案2: Data Center -->
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <img src="assets/4. Solutions/Data center/Gibraltar Data Center.jpg" alt="Data Center Solutions">
+                    </div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">Data Center</h3>
+                        <p class="solution-excerpt">KX Power delivers fully integrated power infrastructure for data centers across the UK and Europe. Our comprehensive service suite encompasses everything from concept and feasibility studies to operation and maintenance, ensuring absolute reliability.</p>
+                        <a href="solutions-datacenter.html" class="learn-more-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>St. Vincent House, 30 Orange Street, London, WC2H 7HF</span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:info@kxpower.co.uk" class="footer-email">info@kxpower.co.uk</a></span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+44 (0)207 459 4352</span>
+                </p>
+            </div>
+            
+            <div class="footer-section logo-section">
+                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KX Power Limited. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="#" class="privacy-policy" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="https://www.linkedin.com/company/kx-power-limited/?originalSubdomain=uk" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Privacy Policy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-modal-body">
+                <h2>Privacy Policy</h2>
+                
+                <p class="policy-intro">KX Power takes your privacy seriously. That is why we will only use your personal information to provide you with the products and services you have requested, as well as to administer your account. We will not sell or share your information with third-parties you grant us explicit permission to do so, and we will never use your personal data for any reason other than the reasons described within this policy.</p>
+                
+                <h3>About our privacy policy</h3>
+                <p>Our privacy policy outlines your relationship with our company and explains in detail how we use the information that you provide us with.</p>
+                
+                <h3>About KX Power</h3>
+                <p>KX Power is the trading name of KX Power Limited, which is registered in England and Wales and registered with the UK's Information Commissioner's Office under the Data Protection Act 2018. We encourage you to get in touch with any questions you may have about.</p>
+                
+                <h3>You can reach us by:</h3>
+                <ul>
+                    <li><strong>Post:</strong> 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom</li>
+                    <li><strong>Telephone:</strong> +44 (0)207 519 6865</li>
+                    <li><strong>Email:</strong> <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a></li>
+                    <li><strong>Website:</strong> <a href="http://www.kxpower.co.uk" target="_blank">www.kxpower.co.uk</a></li>
+                </ul>
+                
+                <h3>Changing your preferences</h3>
+                <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
+                
+                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            const solutionCards = document.querySelectorAll('.solution-card');
+            const solutionsMainImage = document.querySelector('.solutions-image img');
+            
+            // 添加Mac风格锁屏动画效果
+            if (solutionsMainImage) {
+                // 创建Mac风格锁屏动画效果
+                const addMacStyleEffect = () => {
+                    // 创建覆盖层用于显示特殊效果
+                    const overlay = document.createElement('div');
+                    overlay.className = 'mac-effect-overlay';
+                    overlay.style.position = 'absolute';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.width = '100%';
+                    overlay.style.height = '100%';
+                    overlay.style.zIndex = '3';
+                    overlay.style.pointerEvents = 'none';
+                    
+                    // 添加动态光效果
+                    const glowEffect = document.createElement('div');
+                    glowEffect.className = 'cloud-effect';
+                    
+                    // 添加交互效果 - 当鼠标悬停时加快动画
+                    const solutionsImage = document.querySelector('.solutions-image');
+                    solutionsImage.addEventListener('mouseenter', () => {
+                        // 加快动画速度
+                        solutionsMainImage.style.animationDuration = '8s';
+                        glowEffect.style.animationDuration = '15s';
+                    });
+                    
+                    solutionsImage.addEventListener('mouseleave', () => {
+                        // 恢复正常动画速度
+                        solutionsMainImage.style.animationDuration = '15s';
+                        glowEffect.style.animationDuration = '20s';
+                    });
+                    
+                    // 添加覆盖层到图片容器
+                    overlay.appendChild(glowEffect);
+                    solutionsMainImage.parentElement.appendChild(overlay);
+                };
+                
+                // 调用函数添加效果
+                addMacStyleEffect();
+            }
+            
+            // 初始化解决方案卡片的动画效果
+            solutionCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.4s ease';
+                card.style.transitionDelay = `${0.1 + index * 0.1}s`;
+            });
+            
+            // 检查元素是否在视口内
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            };
+            
+            // 添加滚动动画和可见性检查
+            const handleScrollAnimation = () => {
+                solutionCards.forEach((card) => {
+                    if (isElementInViewport(card) && !card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // 页面加载时执行一次
+            setTimeout(handleScrollAnimation, 100);
+            
+            // 返回顶部按钮功能
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // 监听滚动事件来显示/隐藏按钮
+            window.addEventListener('scroll', function() {
+                // 当滚动超过300px时显示按钮
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // 点击按钮返回顶部
+            backToTopBtn.addEventListener('click', function() {
+                // 使用平滑滚动返回顶部
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 隐私政策弹窗功能
+            const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+            const privacyModal = document.getElementById('privacyModal');
+            const closePrivacyModal = privacyModal.querySelector('.close-modal');
+            
+            // 点击隐私政策链接
+            privacyPolicyLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                privacyModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+            
+            // 点击关闭按钮
+            closePrivacyModal.addEventListener('click', function() {
+                privacyModal.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+            });
+            
+            // 点击模态框背景部分关闭
+            privacyModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    privacyModal.style.display = 'none';
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

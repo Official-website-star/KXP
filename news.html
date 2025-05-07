@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - KX Power</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        /* News页面特定样式 */
+        .news-title-section {
+            margin-top: 70px;
+            padding: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .news-intro {
+            padding: 80px 5% 60px;
+            background-color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3, #003865);
+        }
+        
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 56, 101, 0.03), transparent 70%);
+            z-index: 0;
+        }
+        
+        .intro-container h2 {
+            font-size: 34px;
+            color: #003865;
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+            z-index: 1;
+        }
+        
+        .intro-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        .intro-text {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 1s forwards ease-out;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* 新闻列表部分 */
+        .news-section {
+            padding: 45px 5% 70px;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.07), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+        }
+        
+        .news-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.05), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        /* 新闻卡片设计 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .news-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 56, 101, 0.15);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #003865, #0066b3);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Calibri", sans-serif;
+            z-index: 1;
+        }
+        
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #003865;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-family: "Georgia", serif;
+        }
+        
+        .news-excerpt {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .read-more-link {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #0066b3;
+            font-weight: 400;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: "Georgia", serif;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .read-more-link i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-link:hover {
+            color: #003865;
+        }
+        
+        .read-more-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 新闻详情模态框 */
+        .news-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .news-modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.4s ease;
+            overflow: hidden;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .news-modal-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .news-modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-modal-date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #003865, #0066b3);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #003865;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background-color: #003865;
+            color: #fff;
+        }
+        
+        .news-modal-body {
+            padding: 30px;
+        }
+        
+        .news-modal-title {
+            color: #003865;
+            font-size: 28px;
+            margin: 0 0 20px;
+            font-family: "Georgia", serif;
+            line-height: 1.3;
+        }
+        
+        .news-modal-content p {
+            margin: 0 0 20px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .news-modal-content h3 {
+            color: #003865;
+            font-size: 20px;
+            margin: 30px 0 15px;
+            font-family: "Georgia", serif;
+        }
+        
+        .news-modal-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0066b3;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+            font-family: "Calibri", sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .news-modal-link:hover {
+            color: #003865;
+            text-decoration: underline;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 28px;
+            }
+            
+            .intro-text {
+                font-size: 17px;
+            }
+            
+            .news-title {
+                font-size: 20px;
+            }
+            
+            .intro-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .news-intro {
+                padding: 70px 5% 40px;
+            }
+            
+            .intro-container {
+                padding: 25px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 26px;
+            }
+            
+            .intro-text {
+                font-size: 16px;
+                text-align: center;
+            }
+            
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .news-intro,
+            .news-section {
+                padding: 40px 5%;
+            }
+            
+            .news-title {
+                font-size: 19px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .news-intro {
+                padding: 60px 5% 30px;
+            }
+            
+            .intro-container {
+                padding: 20px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 24px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .news-title {
+                font-size: 18px;
+            }
+        }
+
+        /* 返回顶部按钮功能 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #003865;
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: #0066b3;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 标题部分 -->
+    <section class="news-title-section">
+        <!-- 空部分，保持与其他页面结构一致 -->
+    </section>
+
+    <!-- 新闻介绍部分 -->
+    <section class="news-intro">
+        <div class="intro-container">
+            <h2>Latest News & Updates</h2>
+            <p class="intro-text">Stay informed with the latest developments, announcements, and industry insights from KX Power. Discover how we are transforming the energy storage landscape through innovation and strategic partnerships.</p>
+        </div>
+    </section>
+
+    <!-- 新闻列表部分 -->
+    <section class="news-section">
+        <div class="news-container">
+            <div class="section-heading">
+                <h2>Industry Updates</h2>
+            </div>
+            
+            <div class="news-grid">
+                <!-- 新闻1 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <span class="news-date">January 25, 2023</span>
+                        <img src="assets/5. News/NEWS1_Top Energy Storage Companies to Watch in 2023.jpg" alt="Top Energy Storage Companies to Watch in 2023">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Ten Energy Storage Companies to Watch In 2023</h3>
+                        <p class="news-excerpt">The energy storage sector is poised for significant growth in 2023, with innovative companies leading the charge in developing advanced battery technology and storage solutions. KX Power has been recognized among the top energy storage companies to watch this year, highlighting our commitment to innovation and excellence in the industry.</p>
+                        <a href="#" class="read-more-link" data-news="news1">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 新闻2 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <span class="news-date">June 7, 2022</span>
+                        <img src="assets/5. News/News2_KX Power Joint Venture.jpg" alt="BlackRock Real Assets and KX Power sign Joint Venture">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">BlackRock Real Assets and KX Power sign Joint Venture to develop significant battery storage assets in the UK</h3>
+                        <p class="news-excerpt">BlackRock has made an initial commitment of up to £200 million to support the build-out of up to 2GWh battery storage assets in the UK to enable more homegrown green power. This strategic partnership marks a significant milestone in accelerating the UK's transition to renewable energy.</p>
+                        <a href="#" class="read-more-link" data-news="news2">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 新闻3 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <span class="news-date">November 10, 2022</span>
+                        <img src="assets/5. News/News3_Financial Close Reached For Second Phase Of Battery Storage Project.jpg" alt="Financial Close Reached For Second Phase Of Battery Storage Project">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">Financial close reached for second phase of battery storage project</h3>
+                        <p class="news-excerpt">KX Power has successfully reached financial close on the second phase of its innovative battery storage project, marking another important step in expanding our energy storage capacity and supporting the UK's renewable energy infrastructure.</p>
+                        <a href="#" class="read-more-link" data-news="news3">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻详情模态框 -->
+    <!-- 新闻1详情 -->
+    <div class="news-modal" id="news1-modal">
+        <div class="news-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="news-modal-header">
+                <span class="news-modal-date">January 25, 2023</span>
+                <img src="assets/5. News/NEWS1_Top Energy Storage Companies to Watch in 2023.jpg" alt="Top Energy Storage Companies to Watch in 2023">
+            </div>
+            <div class="news-modal-body">
+                <h2 class="news-modal-title">Ten Energy Storage Companies to Watch In 2023</h2>
+                
+                <p>The energy storage sector is witnessing unprecedented growth as the world transitions to cleaner energy sources. With increasing investment and technological advancements, several companies are emerging as leaders in this transformative industry.</p>
+                
+                <p>KX Power has been recognized among the top energy storage companies to watch in 2023, highlighting our innovative approach to battery storage solutions and our commitment to enabling the renewable energy transition.</p>
+                
+                <p>The recognition comes at a time when battery energy storage systems (BESS) are becoming increasingly critical to resolving the intermittency challenges associated with renewable energy sources such as wind and solar power. By providing reliable storage capacity, companies like KX Power are helping to accelerate the adoption of clean energy and support the UK's journey toward Net Zero emissions.</p>
+                
+                <p>As we continue to expand our portfolio of energy storage projects and forge strategic partnerships, KX Power remains dedicated to driving innovation in the sector and contributing to a more sustainable energy future.</p>
+                
+                <a href="https://tamarindo.global/insight/analysis/ten-energy-storage-companies-to-watch-in-2023/" class="news-modal-link" target="_blank">View original article at Tamarindo Global</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新闻2详情 -->
+    <div class="news-modal" id="news2-modal">
+        <div class="news-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="news-modal-header">
+                <span class="news-modal-date">June 7, 2022</span>
+                <img src="assets/5. News/News2_KX Power Joint Venture.jpg" alt="BlackRock Real Assets and KX Power sign Joint Venture">
+            </div>
+            <div class="news-modal-body">
+                <h2 class="news-modal-title">BlackRock Real Assets and KX Power sign Joint Venture to develop significant battery storage assets in the UK</h2>
+                
+                <p>BlackRock has made an initial commitment of up to £200 million to support the build-out of up to 2GWh battery storage assets in the UK to enable more homegrown green power.</p>
+                
+                <p><strong>London, 7 June, 2022</strong> – KX Power ("KXP"), a London-based battery storage developer announces it is signing a joint venture with BlackRock Real Assets to develop, build and operate battery storage projects across the UK. The investment is being made by the BlackRock Global Renewable Power III ("GRP III") fund and will support the build out of up to 2GWh (Gigawatt hours) of battery storage assets across the UK.</p>
+                
+                <p>Battery energy storage systems ("BESS") assets' capacity to resolve the intermittency of natural sources such as wind or solar power, makes them complementary to other forms of renewable energy infrastructure, and integral to accelerating the rollout of homegrown renewable energy across the UK, in line with the country's 2050 Net-Zero strategy. BlackRock's initial comment to the joint venture will enable the buildout of enough renewables generation projects to power over 2 million homes annually, and to remove 16 million tons of CO2 over the lifetime of the projects.</p>
+                
+                <p>This investment is GRP III's first into the UK's battery storage market and brings together BlackRock's infrastructure expertise and KXP's extensive experience developing BESS assets to create a portfolio of advanced energy storage systems supporting the UK's energy transition, and in tandem, increased energy security.</p>
+                
+                <h3>Executive Statements</h3>
+                
+                <p><strong>David Giordano, Managing Director, Global Head of Renewable Power at BlackRock commented:</strong> "GRP III invests in the climate infrastructure of the future. With our JV investment in KXP, we are delighted to be driving the development and expansion of the UK's battery storage market. On behalf of our clients, we see vast opportunity in the development of a sophisticated network of battery storage assets across the UK and in other regions across the globe to facilitate the transition towards a green energy future."</p>
+                
+                <p>BlackRock's Global Renewable Power platform has invested in over 400 wind, solar and other climate infrastructure projects across 17 countries in 4 continents. The Global Renewable Power team consists of 66 professionals, with an average of over 20 years of investment and technical expertise. The team now manages over US$9.7 billion of client capital, with an emphasis on globally diversified portfolios, measurable climate impact and differentiated sourcing.</p>
+                
+                <p><strong>Dr. Zhe Zhang, CEO of KXP, commented:</strong> "Our mission is to enable more and more adoption of UK homegrown green power, as embraced by the UK Administration's Net Zero Strategy and by local councils. Combining KXP's on-the-ground project development skills and power trading expertise with BlackRock's knowledge and track record in climate infrastructure, I am certain KXP will become a significant player in the renewable energy market in the UK. Today's investment is a testament to investors' strong appetite for renewable energy and accelerates the UK's growth towards innovative, sustainable and inclusive energy."</p>
+                
+                <h3>About KX Power</h3>
+                <p>KXP are a well-established, UK-based, asset management firm specialising in the origination, development, investment and management of real, renewable energy and power generation assets. With deep knowledge of the complete value chain and entire lifecycle of renewable energy projects, KXP's local teams have successfully developed, financed, built and operated energy storage assets in the UK. With this strong foundation and an ambition for growth, KXP have built a strong pipeline for the development of future energy assets.</p>
+                
+                <p>KXP are dedicated to the transition to a low-carbon energy ecosystem. With its expertise and resources in green technology, digitalisation, power trading/optimisation and capital market, KXP's vision is to become the preeminent UK renewable energy sponsor. For more information of KX Power, please visit: www.kxpower.co.uk.</p>
+                
+                <h3>About BlackRock Real Assets</h3>
+                <p>In today's dynamic and complex global investing market, BlackRock Real Assets seeks to help clients access real assets that could help meet their investment goals by providing a distinct range of well defined, outcome orientated strategies, along the investment risk-return spectrum.</p>
+                
+                <p>BlackRock Real Assets' dedicated teams of industry and sector specialists deliver global reach, with deep local expertise. They have decades of relevant experience, are deeply embedded in their operating industries by sector and geography and have developed strong partnership networks over time. BlackRock's culture of risk management, knowledge sharing and investment discipline sets BlackRock Real Assets apart and underpins all that they do. With over 400 professionals in 30 offices managing over US$70 billion in client commitments as of 31 March 2022, BlackRock Real Assets partners with clients to provide solutions tailored to individual portfolio needs such as income, growth, liquid or balanced real assets outcomes.</p>
+                
+                <p><strong>Press Contact for KX Power:</strong><br>
+                info@kxpower.co.uk</p>
+                
+                <p><strong>Press Contact for BlackRock:</strong><br>
+                GroupCorpCommsEMEA@blackrock.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新闻3详情 -->
+    <div class="news-modal" id="news3-modal">
+        <div class="news-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="news-modal-header">
+                <span class="news-modal-date">November 10, 2022</span>
+                <img src="assets/5. News/News3_Financial Close Reached For Second Phase Of Battery Storage Project.jpg" alt="Financial Close Reached For Second Phase Of Battery Storage Project">
+            </div>
+            <div class="news-modal-body">
+                <h2 class="news-modal-title">Financial close reached for second phase of battery storage project</h2>
+                
+                <p>KX Power has successfully reached financial close on the second phase of its innovative battery storage project, marking another important milestone in our mission to enhance the UK's renewable energy infrastructure.</p>
+                
+                <p>This achievement represents a significant step forward in expanding our battery energy storage capacity, which plays a crucial role in addressing the intermittency challenges associated with renewable energy sources such as wind and solar power.</p>
+                
+                <p>The project, which is part of our broader portfolio of energy storage initiatives, will contribute to the UK's energy security and support the country's transition to a low-carbon future. By providing reliable storage solutions, we are helping to ensure a stable power supply while enabling greater integration of renewable energy into the grid.</p>
+                
+                <p>The financial close follows our strategic partnership with BlackRock Real Assets, announced earlier this year, which has provided substantial investment to support the development of our battery storage assets across the UK.</p>
+                
+                <p>We remain committed to advancing the development of energy storage technologies and contributing to the UK's Net Zero strategy through innovative and sustainable solutions.</p>
+                
+                <a href="https://www.insidermedia.com/news/south-west/financial-close-reached-for-second-phase-of-battery-storage-project" class="news-modal-link" target="_blank">View original article at Insider Media</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>St. Vincent House, 30 Orange Street, London, WC2H 7HF</span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:info@kxpower.co.uk" class="footer-email">info@kxpower.co.uk</a></span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+44 (0)207 459 4352</span>
+                </p>
+            </div>
+            
+            <div class="footer-section logo-section">
+                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KX Power Limited. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="#" class="privacy-policy" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="https://www.linkedin.com/company/kx-power-limited/?originalSubdomain=uk" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Privacy Policy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-modal-body">
+                <h2>Privacy Policy</h2>
+                
+                <p class="policy-intro">KX Power takes your privacy seriously. That is why we will only use your personal information to provide you with the products and services you have requested, as well as to administer your account. We will not sell or share your information with third-parties you grant us explicit permission to do so, and we will never use your personal data for any reason other than the reasons described within this policy.</p>
+                
+                <h3>About our privacy policy</h3>
+                <p>Our privacy policy outlines your relationship with our company and explains in detail how we use the information that you provide us with.</p>
+                
+                <h3>About KX Power</h3>
+                <p>KX Power is the trading name of KX Power Limited, which is registered in England and Wales and registered with the UK's Information Commissioner's Office under the Data Protection Act 2018. We encourage you to get in touch with any questions you may have about.</p>
+                
+                <h3>You can reach us by:</h3>
+                <ul>
+                    <li><strong>Post:</strong> 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom</li>
+                    <li><strong>Telephone:</strong> +44 (0)207 519 6865</li>
+                    <li><strong>Email:</strong> <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a></li>
+                    <li><strong>Website:</strong> <a href="http://www.kxpower.co.uk" target="_blank">www.kxpower.co.uk</a></li>
+                </ul>
+                
+                <h3>Changing your preferences</h3>
+                <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
+                
+                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsCards = document.querySelectorAll('.news-card');
+            const readMoreLinks = document.querySelectorAll('.read-more-link');
+            const newsModals = document.querySelectorAll('.news-modal');
+            const closeModalButtons = document.querySelectorAll('.close-modal');
+            
+            // 初始化新闻卡片的动画效果
+            newsCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.4s ease';
+                card.style.transitionDelay = `${0.1 + index * 0.1}s`;
+            });
+            
+            // 检查元素是否在视口内
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.bottom >= 0
+                );
+            };
+            
+            // 添加滚动动画和可见性检查
+            const handleScrollAnimation = () => {
+                newsCards.forEach((card) => {
+                    if (isElementInViewport(card) && !card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // 页面加载时执行一次
+            setTimeout(handleScrollAnimation, 100);
+            
+            // 阅读更多链接点击事件
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newsId = this.getAttribute('data-news');
+                    const modal = document.getElementById(`${newsId}-modal`);
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    
+                    // 在弹窗打开时添加ESC键关闭功能
+                    document.addEventListener('keydown', escKeyCloseModal);
+                });
+            });
+            
+            // 关闭按钮点击事件
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', closeModal);
+            });
+            
+            // 点击模态框背景部分关闭
+            newsModals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+            });
+            
+            // 关闭模态框函数
+            function closeModal() {
+                newsModals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = ''; // 恢复背景滚动
+                
+                // 移除ESC键关闭事件监听
+                document.removeEventListener('keydown', escKeyCloseModal);
+            }
+            
+            // ESC键关闭模态框
+            function escKeyCloseModal(e) {
+                if (e.key === 'Escape' || e.keyCode === 27) {
+                    closeModal();
+                }
+            }
+            
+            // 返回顶部按钮功能
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // 监听滚动事件来显示/隐藏按钮
+            window.addEventListener('scroll', function() {
+                // 当滚动超过300px时显示按钮
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // 点击按钮返回顶部
+            backToTopBtn.addEventListener('click', function() {
+                // 使用平滑滚动返回顶部
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 隐私政策弹窗功能
+            const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+            const privacyModal = document.getElementById('privacyModal');
+            const closePrivacyModal = privacyModal.querySelector('.close-modal');
+            
+            // 点击隐私政策链接
+            privacyPolicyLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                privacyModal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+            });
+            
+            // 点击关闭按钮
+            closePrivacyModal.addEventListener('click', function() {
+                privacyModal.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+            });
+            
+            // 点击模态框背景部分关闭
+            privacyModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    privacyModal.style.display = 'none';
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - KX Power</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <style>
+        /* Career页面特定样式 */
+        /* 标题部分样式调整 - 移除Join Our Team标题后的调整 */
+        .career-title-section {
+            margin-top: 70px;
+            padding: 0; /* 不再需要额外的内边距 */
+            height: 0; /* 高度为0 */
+            overflow: hidden; /* 隐藏任何内容 */
+        }
+        
+        .career-intro {
+            padding: 80px 5% 60px; /* 增加顶部内边距，弥补移除标题后的空间 */
+            background-color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .career-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #003865, #0066b3, #003865);
+        }
+        
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .intro-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 56, 101, 0.03), transparent 70%);
+            z-index: 0;
+        }
+        
+        .intro-container h2 {
+            font-size: 34px; /* 稍微增大主标题字体 */
+            color: #003865;
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            padding-bottom: 15px;
+            background: linear-gradient(90deg, #003865, #0066b3, #003865);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s linear infinite;
+            z-index: 1;
+        }
+        
+        .intro-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* 文字卡片样式 */
+        .intro-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.05);
+            padding: 25px 30px;
+            margin: 0 auto 40px;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 56, 101, 0.02) 0%, transparent 100%);
+            z-index: 0;
+        }
+        
+        .intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 56, 101, 0.1);
+        }
+        
+        .intro-text {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #333;
+            font-family: "Calibri", "Times New Roman", sans-serif;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .intro-features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature-item {
+            width: 22%;
+            min-width: 220px;
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: #fff;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 56, 101, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: #003865;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover .feature-icon {
+            background: linear-gradient(135deg, #003865, #0066b3);
+            color: #fff;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #003865;
+            margin-bottom: 10px;
+        }
+        
+        .feature-text {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 职位列表部分 - 新样式 */
+        .career-jobs {
+            padding: 45px 5% 70px;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .career-jobs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.07), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+        }
+        
+        .career-jobs::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 56, 101, 0.05), transparent 70%);
+            z-index: 1;
+            animation: pulse-glow 8s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        .jobs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading h2 {
+            font-size: 32px;
+            color: #003865;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-family: "Georgia", serif;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #003865, #0066b3);
+        }
+        
+        /* 职位卡片列表 - 全新设计 */
+        .job-listings {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .job-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: none;
+            position: relative;
+        }
+        
+        .job-card:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #003865, #0066b3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 56, 101, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .job-card:hover:before {
+            width: 8px;
+        }
+        
+        .job-header {
+            padding: 30px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 56, 101, 0.08);
+            position: relative;
+            z-index: 1;
+            background-color: #f8fbff;
+        }
+        
+        .job-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .job-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #003865, #0066b3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 22px;
+        }
+        
+        .job-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003865;
+            margin: 0;
+            font-family: "Georgia", serif;
+            line-height: 1.3;
+        }
+        
+        .job-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .job-location i {
+            color: #0066b3;
+            font-size: 14px;
+        }
+        
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #003865, #0066b3);
+            color: #fff;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: "Georgia", serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .apply-btn i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background: linear-gradient(135deg, #0066b3, #003865);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 56, 101, 0.2);
+        }
+        
+        .apply-btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        .job-description {
+            padding: 25px 35px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(0, 56, 101, 0.08);
+            background-color: #fff;
+        }
+        
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background-color: #f0f6ff;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #003865;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .job-meta-item i {
+            color: #0066b3;
+            font-size: 14px;
+        }
+        
+        .job-description p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .job-details {
+            padding: 0 35px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            z-index: 1;
+            background-color: #fff;
+        }
+        
+        .job-details.expanded {
+            max-height: 2000px;
+            padding: 25px 35px 30px;
+        }
+        
+        .job-details h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003865;
+            margin: 30px 0 15px;
+            font-family: "Calibri", sans-serif;
+            padding-left: 15px;
+            border-left: 3px solid #0066b3;
+        }
+        
+        .job-details h4:first-child {
+            margin-top: 0;
+        }
+        
+        .job-details ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .job-details li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #555;
+            font-family: "Calibri", sans-serif;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        .job-details li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .read-more-container {
+            position: relative;
+            border-top: 1px solid rgba(0, 56, 101, 0.08);
+        }
+        
+        .read-more-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: auto;
+            padding: 15px 35px;
+            background: none;
+            border: none;
+            text-align: left;
+            color: #0066b3;
+            font-weight: 400;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .read-more-btn i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+        
+        .read-more-btn:hover {
+            color: #003865;
+            background-color: rgba(0, 56, 101, 0.03);
+        }
+        
+        .read-more-btn:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 102, 179, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-btn:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* 修改动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 新增的渐变边框效果 */
+        .job-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 1200px) {
+            .intro-features {
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .feature-item {
+                width: 45%;
+                max-width: 300px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .apply-btn {
+                align-self: flex-start;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 28px;
+            }
+            
+            .intro-text {
+                font-size: 17px;
+            }
+            
+            .intro-card {
+                padding: 20px 25px;
+            }
+            
+            .job-title {
+                font-size: 20px;
+            }
+            
+            .intro-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .career-intro {
+                padding: 70px 5% 40px;
+            }
+            
+            .intro-container {
+                padding: 25px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 26px;
+            }
+            
+            .intro-text {
+                font-size: 16px;
+                text-align: center;
+            }
+            
+            .feature-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .career-intro,
+            .career-jobs {
+                padding: 40px 5%;
+            }
+            
+            .job-header, 
+            .job-description,
+            .job-details.expanded {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .career-intro {
+                padding: 60px 5% 30px;
+            }
+            
+            .intro-container {
+                padding: 20px;
+            }
+            
+            .intro-container h2,
+            .section-heading h2 {
+                font-size: 24px;
+            }
+            
+            .job-title {
+                font-size: 18px;
+            }
+            
+            .apply-btn {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+            
+            .job-header, 
+            .job-description,
+            .job-details.expanded {
+                padding: 15px;
+            }
+            
+            .job-details h4 {
+                font-size: 16px;
+            }
+        }
+
+        /* 申请表单弹窗样式 */
+        .application-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .application-modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 0;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.4s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #003865;
+            font-size: 28px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: #0066b3;
+        }
+        
+        .application-modal-body {
+            padding: 30px;
+        }
+        
+        .application-modal-body h2 {
+            color: #003865;
+            font-size: 24px;
+            margin: 0 0 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            font-family: "Georgia", serif;
+        }
+        
+        .application-info {
+            margin-bottom: 20px;
+        }
+        
+        .application-info p {
+            margin: 0 0 15px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .application-info p.email {
+            font-weight: 600;
+            color: #003865;
+            font-size: 18px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .application-info p.note {
+            font-style: italic;
+            margin-top: 20px;
+            color: #555;
+        }
+        
+        .application-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #444;
+            font-size: 16px;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: "Calibri", sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #003865;
+            box-shadow: 0 0 0 2px rgba(0, 56, 101, 0.1);
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .file-upload-info {
+            padding: 25px;
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        .file-upload-info i {
+            font-size: 30px;
+            color: #003865;
+        }
+        
+        .file-upload-info span {
+            font-size: 16px;
+            color: #444;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .file-name {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #0066b3;
+            font-weight: 600;
+            word-break: break-all;
+        }
+        
+        .file-upload-info.highlight {
+            border-color: #003865;
+            background-color: rgba(0, 56, 101, 0.05);
+        }
+        
+        .has-file .file-upload-info {
+            border-color: #0066b3;
+            background-color: rgba(0, 102, 179, 0.05);
+        }
+        
+        .form-submit {
+            margin-top: 10px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #003865;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: "Calibri", sans-serif;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0066b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 56, 101, 0.2);
+        }
+        
+        .submit-btn:disabled {
+            background-color: #7c97ac;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .application-modal-content {
+                margin: 30px auto;
+                width: 95%;
+            }
+            
+            .application-modal-body {
+                padding: 20px;
+            }
+            
+            .application-modal-body h2 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .form-group label {
+                font-size: 15px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px;
+                font-size: 15px;
+            }
+            
+            .file-upload-info {
+                padding: 20px;
+            }
+            
+            .submit-btn {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+
+        /* 返回顶部按钮功能 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #003865;
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: #0066b3;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html" class="active">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 标题部分 - 替换原来的横幅图片 -->
+    <section class="career-title-section">
+        <!-- 删除原有的Join Our Team标题和分隔线 -->
+        <!-- <h1>Join Our Team</h1>
+        <div class="title-line"></div> -->
+    </section>
+
+    <!-- 职业介绍部分 - 调整为两端对齐的卡片 -->
+    <section class="career-intro">
+        <div class="intro-container">
+            <h2>Power Your Career with KX Power</h2>
+            <div class="intro-card">
+                <p class="intro-text">At KX Power, we're not just building energy storage systems – we're building a sustainable future. Join our dynamic team of experts passionate about renewable energy innovation and make a meaningful impact on the global transition to clean energy. We value creativity, dedication, and a collaborative spirit as we expand our operations across the UK, Europe, Middle East, and Africa.</p>
+            </div>
+            
+            <!-- 工作特点 - 水平排列 -->
+            <div class="intro-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="feature-title">Innovation</h3>
+                    <p class="feature-text">We encourage creative thinking and pioneering approaches to solve complex energy challenges.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Teamwork</h3>
+                    <p class="feature-text">We collaborate across disciplines, leveraging diverse perspectives to achieve excellence.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title">Impact</h3>
+                    <p class="feature-text">Your work will directly contribute to advancing sustainable energy solutions worldwide.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Growth</h3>
+                    <p class="feature-text">We invest in professional development and provide clear paths for career advancement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 职位列表部分 - 每行一个职位 -->
+    <section class="career-jobs">
+        <div class="jobs-container">
+            <div class="section-heading">
+                <h2>Current Opportunities</h2>
+            </div>
+            
+            <div class="job-listings">
+                <!-- 职位1: System Engineer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <div class="job-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h3 class="job-title">System Engineer</h3>
+                                <div class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>London, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="job-description">
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-time</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Bachelor/Master Degree</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-history"></i>
+                                <span>3-5 Years Experience</span>
+                            </div>
+                        </div>
+                        <p>The System Engineer will lead the technical aspects of the battery energy storage projects and provide expertise to support project development from the project inception through to energisation.</p>
+                    </div>
+                    <div class="job-details" id="job-details-1">
+                        <h4>Key Responsibility:</h4>
+                        <ul>
+                            <li>General design of grid scale battery storage system including site layout and SLD design, augmentation optimisation, power system study and grid code compliance, control/monitoring system and ancillary systems</li>
+                            <li>Technical support for the procurement of grid scale battery storage system</li>
+                            <li>Technical support for EPC tendering and technical due diligence</li>
+                            <li>Review the project specific constraints, specify technical requirements and collaborate with the EPC/contractors to optimise the design and engineering solutions (BoP and ICP)</li>
+                            <li>Work closely with Project Manager to monitor project development process and review technical deliveries throughout the design, construction and commissioning</li>
+                            <li>Supervision of Factory Acceptance Test (FAT) and/or Site Acceptance Test (SAT)</li>
+                            <li>Attend technical meetings with key stakeholders (EPC, NG/DNO, Technical Due Diligence, …)</li>
+                            <li>Technical assessment of new BESS projects in the development portfolio</li>
+                        </ul>
+                        
+                        <h4>Knowledge and Skill Requirement:</h4>
+                        <ul>
+                            <li>3-5 years design experience in grid scale battery storage plant or utility HV and EHV substation</li>
+                            <li>Bachelor or Master degree in engineering (with a specialism in Electrical Power Engineering, Battery Storage or equivalent)</li>
+                            <li>Proven technical knowledge of Li-ion battery, inverter and battery storage system integration</li>
+                            <li>Knowledge of applicable standards and certifications in energy storage system</li>
+                            <li>Familiarity and experience with Transmission & Distribution network and Grid Code requirements in UK</li>
+                            <li>Ability of keeping up to date with new products/technology and technology advancements in industry</li>
+                            <li>Commercial awareness of system design and engineering solutions</li>
+                            <li>Experience with design software DIgSILENT or ETAP</li>
+                            <li>Excellent AutoCAD and MS Office skills</li>
+                            <li>Excellent communication skills and collaboration abilities</li>
+                            <li>Experience of working with DNOs and facilitating grid connections desired</li>
+                        </ul>
+                    </div>
+                    <div class="read-more-container">
+                        <button class="read-more-btn" data-target="job-details-1">Read more <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- 职位2: Construction Project Manager -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <div class="job-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <div>
+                                <h3 class="job-title">Construction Project Manager</h3>
+                                <div class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Manchester, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="job-description">
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-time</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>HNC Degree or Equivalent</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>SMSTC, CSCS Required</span>
+                            </div>
+                        </div>
+                        <p>The Construction Project Manager will be supporting the client by overseeing site activities, ensuring construction progress, safety and compliance, managing stakeholder communications, reporting project status, and facilitating issue resolution throughout the project lifecycle.</p>
+                    </div>
+                    <div class="job-details" id="job-details-2">
+                        <h4>Site Monitoring and Inspections:</h4>
+                        <ul>
+                            <li>Monitor the principal contractor and sub-contractors on site throughout the construction period to assess progress against the agreed construction programme plan and in adherence site rules, H&S and Environmental Management legislation</li>
+                            <li>Carry out regular site inspections to ensure compliance and take necessary action as and when required</li>
+                            <li>Treat the equipment and systems on the site with extreme caution, during the whole construction or installation process</li>
+                            <li>Facilitate access to the site</li>
+                            <li>Ability to assist with the resolution of issues, and also report and escalate timely, effectively and efficiently</li>
+                        </ul>
+                        
+                        <h4>Reporting:</h4>
+                        <ul>
+                            <li>Key liaison between client and Principal Contractor</li>
+                            <li>Prepare and submit reports and keep updating the log on the progress and status of the project to both client and employer on a weekly basis</li>
+                            <li>Precise and professional writing skills in reflecting the actual status quo of the site construction to the client on a preferably day-to-day basis</li>
+                            <li>Reporting on mandatory requirements for discharge of planning condition No. 5</li>
+                            <li>Understand the client's possible need for promotion or publicity purposes, and accordingly take photos and videos from time to time to track site changes</li>
+                        </ul>
+                        
+                        <h4>Meeting Attendance:</h4>
+                        <ul>
+                            <li>Attend project meetings to represent client with all key stakeholders as required and provide updates back to the client</li>
+                            <li>Good sense of differentiating matters by level of significance, urgency, and priority, and knowing when to refer significant ones to the client's attention and Involve the client's direct participation of such project meetings</li>
+                        </ul>
+                        
+                        <h4>Knowledge and Experience:</h4>
+                        <ul>
+                            <li>Good communication skills</li>
+                            <li>Relevant accreditations required: Site Management Safety Training Certificate (SMSTC), Construction Skills Certification Scheme (CSCS)</li>
+                            <li>HNC Degree or equivalent in Construction discipline</li>
+                            <li>Project Management qualification / experience</li>
+                            <li>NEBOSH Certificate in Occupational H&S or equivalent</li>
+                            <li>First Aid at work</li>
+                            <li>Experience of managing a wide variety of stakeholders including local communities</li>
+                            <li>Experience of managing large-scale energy projects with multiple contractors and stakeholders</li>
+                            <li>An understanding of planning and environmental issues in relation to large scale energy projects</li>
+                            <li>Experience of working in the public and private sector Experience of working in conjunction with Distribution Network Operator (DNO)</li>
+                        </ul>
+                    </div>
+                    <div class="read-more-container">
+                        <button class="read-more-btn" data-target="job-details-2">Read more <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- 职位3: Technical Development Engineer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <div class="job-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h3 class="job-title">Technical Development Engineer</h3>
+                                <div class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>London, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="job-description">
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-time</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Bachelor/Master Degree</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-history"></i>
+                                <span>3-5 Years Experience</span>
+                            </div>
+                        </div>
+                        <p>The Technical Development Engineer will lead the technical aspects of the battery energy storage projects and provide expertise to support project development from the project inception through to energisation.</p>
+                    </div>
+                    <div class="job-details" id="job-details-3">
+                        <h4>Key Responsibility:</h4>
+                        <ul>
+                            <li>Technical support for EPC tendering and technical due diligence at planning stage</li>
+                            <li>Technical support for the procurement of Battery Energy Storage System, including but not limited to specify system requirements, warranty conditions, operation and maintenance inspection scope, as well as FAT/SAT report</li>
+                            <li>Review the project specific constraints, specify detailed technical requirements and collaborate with the technical management of EPCs to define appropriate and feasible system solutions (BoP and ICP)</li>
+                            <li>Supervision of Factory Acceptance Test (FAT) and/or Site Acceptance Test (SAT)</li>
+                            <li>Work as technical interface of all counterparties and ensure the technical clarity</li>
+                            <li>Work closely with the Project Manager to monitor project development process and review technical deliveries</li>
+                            <li>Attend technical meetings with key stakeholders (EPC, DNO, Technical Due Diligence, …)</li>
+                            <li>Technical assessment of new BESS projects in the development portfolio</li>
+                        </ul>
+                        
+                        <h4>Knowledge and Skill Requirement:</h4>
+                        <ul>
+                            <li>3-5 years design experience in utility scale battery storage plant or utility LV, HV, or EHV substation</li>
+                            <li>Bachelor or Master degree in engineering (with a specialism in Electrical Power Engineering, Battery Storage or equivalent)</li>
+                            <li>Proven technical knowledge of the utility scale battery storage system such as battery and MV system selection, augmentation plan optimisation, layout and SLD design, auxiliary power sizing calculation, power cable rating, relay protection, control/monitoring system, fire suppression system, grounding design, lightning protection, …</li>
+                            <li>Familiarity and experience with G99 standards and CDM regulations</li>
+                            <li>Ability of keeping up to date with new products/technology and technology advancements in industry</li>
+                            <li>Commercial awareness of system design and engineering solutions</li>
+                            <li>Excellent AutoCAD and MS Office skills</li>
+                            <li>Excellent communication skills and collaboration abilities</li>
+                            <li>Experience of working with DNOs and facilitating grid connections desired</li>
+                        </ul>
+                    </div>
+                    <div class="read-more-container">
+                        <button class="read-more-btn" data-target="job-details-3">Read more <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- 职位4: Financial Analyst -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <div class="job-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="job-title">Financial Analyst</h3>
+                                <div class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>London, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="job-description">
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-time</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Bachelor/Master Degree</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-history"></i>
+                                <span>3-5 Years Experience</span>
+                            </div>
+                        </div>
+                        <p>The Financial Analyst will be supporting CFO of the company, responsible for finance aspect of fund-raising, company/project financing, investment analysis, as well as contracts negotiation from commercial perspective.</p>
+                    </div>
+                    <div class="job-details" id="job-details-4">
+                        <h4>Key Responsibility:</h4>
+                        <ul>
+                            <li>Financial analysis, modeling for project financing, as well as supporting finance control at company level</li>
+                            <li>Contract drafting, review and analysis, at project level as well as company level from commercial perspective</li>
+                            <li>Preparing and analyzing various project documents for the project due diligence process</li>
+                            <li>Review the project specific constraints, for land ownership and insurance/risk aspects, negotiate with landowners or insurers for conditions and mitigants</li>
+                            <li>Working with solicitors to resolve issues raised during project development process</li>
+                            <li>Attend meetings with key stakeholders (Funder, EPC, DNO, Technical Due Diligence, …)</li>
+                            <li>Financial assessment of new BESS projects in the development portfolio</li>
+                        </ul>
+                        
+                        <h4>Knowledge and Skill Requirement:</h4>
+                        <ul>
+                            <li>3-5 years experience in finance/legal related industry</li>
+                            <li>Bachelor or Master degree in Mathematics/Finance/Law/Accounting</li>
+                            <li>Ability to perform financial analysis, financial modelling for specific purpose independently</li>
+                            <li>Ability to understand, analyse, identify, summarize key terms for any finance or legal documents</li>
+                            <li>Ability of keeping up to date with new products/technology and technology advancements in industry</li>
+                            <li>Ability to communicate well with various stakeholders as well as working with others as a team</li>
+                            <li>Excellent MS Office skills</li>
+                        </ul>
+                    </div>
+                    <div class="read-more-container">
+                        <button class="read-more-btn" data-target="job-details-4">Read more <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+                <!-- 职位5: BESS Field Engineer -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <div class="job-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div>
+                                <h3 class="job-title">BESS Field Engineer</h3>
+                                <div class="job-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Various Locations, United Kingdom</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="apply-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="job-description">
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Full-time</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Electrical Qualification</span>
+                            </div>
+                            <div class="job-meta-item">
+                                <i class="fas fa-car"></i>
+                                <span>Travel Required</span>
+                            </div>
+                        </div>
+                        <p>The BESS Field Service Engineer will perform preventative maintenance, troubleshooting and warranty repairs along with commissioning activities on energy storage units at various BESS sites. This role is to report to the OM Manager.</p>
+                    </div>
+                    <div class="job-details" id="job-details-5">
+                        <h4>Tasks & Typical duties/responsibilities:</h4>
+                        <ul>
+                            <li>Maintain Energy Storage Systems to a high standard by carrying out regular inspection and maintenance, annual capacity tests, trouble shooting and reactive maintenance works</li>
+                            <li>Perform system software and firmware upgrades</li>
+                            <li>Monitor operation performance monitoring and data assessment</li>
+                            <li>Provide phone support and remote diagnostics to customers</li>
+                            <li>Troubleshoot equipment located at BESS sites</li>
+                            <li>Manage spare parts</li>
+                            <li>Responsible for safety work complying with local safety regulations and safety standards</li>
+                            <li>Conduct risk assessment and implement safety measures</li>
+                            <li>Keep up to date with any administrative duties such as timesheets, daily vehicle checks and providing daily job logs describing issues and actions taken during service trips</li>
+                            <li>Assist the in-house system engineering group in product development and/or project work</li>
+                            <li>Provide suggestions based on field experience, to improve the products</li>
+                        </ul>
+                        
+                        <h4>Essential Requirements:</h4>
+                        <ul>
+                            <li>Qualification in an electrical/ electro-mechanical discipline</li>
+                            <li>Previous electrical or multi skilled maintenance experience</li>
+                            <li>Basic IT skills (Word Processing, Outlook, Excel, IP and software for troubleshooting)</li>
+                            <li>Qualification of working on Site safely</li>
+                            <li>This role involves travelling to different sites. Overnight stay or international travel may be required</li>
+                        </ul>
+                        
+                        <h4>Preferred Experience but not essential:</h4>
+                        <ul>
+                            <li>Working experience with BESS</li>
+                            <li>Working knowledge of HV/LV power electronics including inverters / converters / Transformers</li>
+                            <li>Previous HVAC training and F-Gas qualification</li>
+                            <li>Strong understanding of IT related subjects, CMD, remote desktop connections, networking (subnet, VLANs, static IP/DHCP), MODBUS/TCP protocols</li>
+                            <li>C&G2391-5 Test & Inspect or equivalent</li>
+                            <li>Familiar with BS7671 (UK standard)</li>
+                            <li>Familiar with SANS 10142-1 standard (SA standard)</li>
+                            <li>HV authorised person</li>
+                        </ul>
+                        
+                        <h4>We offer:</h4>
+                        <ul>
+                            <li>Competitive salary based on experience and qualification</li>
+                            <li>Generous holiday allowance</li>
+                            <li>Workplace pension</li>
+                            <li>Full training, company van (business use only), sim card, fuel card and laptop will be provided</li>
+                            <li>Team building events and employee learning opportunities</li>
+                        </ul>
+                    </div>
+                    <div class="read-more-container">
+                        <button class="read-more-btn" data-target="job-details-5">Read more <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="quick-links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>St. Vincent House, 30 Orange Street, London, WC2H 7HF</span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:info@kxpower.co.uk" class="footer-email">info@kxpower.co.uk</a></span>
+                </p>
+                <p class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+44 (0)207 459 4352</span>
+                </p>
+            </div>
+            
+            <div class="footer-section logo-section">
+                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 KX Power Limited. All Rights Reserved.</p>
+            <div class="footer-right">
+                <a href="#" class="privacy-policy" id="privacyPolicyLink">Privacy Policy</a>
+                <a href="https://www.linkedin.com/company/kx-power-limited/?originalSubdomain=uk" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="privacy-modal-body">
+                <h2>Privacy Policy</h2>
+                
+                <p class="policy-intro">KX Power takes your privacy seriously. That is why we will only use your personal information to provide you with the products and services you have requested, as well as to administer your account. We will not sell or share your information with third-parties you grant us explicit permission to do so, and we will never use your personal data for any reason other than the reasons described within this policy.</p>
+                
+                <h3>About our privacy policy</h3>
+                <p>Our privacy policy outlines your relationship with our company and explains in detail how we use the information that you provide us with.</p>
+                
+                <h3>About KX Power</h3>
+                <p>KX Power is the trading name of KX Power Limited, which is registered in England and Wales and registered with the UK's Information Commissioner's Office under the Data Protection Act 2018. We encourage you to get in touch with any questions you may have about.</p>
+                
+                <h3>You can reach us by:</h3>
+                <ul>
+                    <li><strong>Post:</strong> 71-75 Shelton Street, Covent Garden, London WC2H 9JQ, United Kingdom</li>
+                    <li><strong>Telephone:</strong> +44 (0)207 519 6865</li>
+                    <li><strong>Email:</strong> <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a></li>
+                    <li><strong>Website:</strong> <a href="http://www.kxpower.co.uk" target="_blank">www.kxpower.co.uk</a></li>
+                </ul>
+                
+                <h3>Changing your preferences</h3>
+                <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
+                
+                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 申请表单弹窗 -->
+    <div class="application-modal" id="applicationModal">
+        <div class="application-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="application-modal-body">
+                <h2>How to Apply: <span id="modalJobTitle"></span></h2>
+                <div class="application-info">
+                    <p>If you are a proactive and experienced professional eager to contribute to impactful energy projects, we encourage you to apply. Please submit your resume and a cover letter outlining your relevant experience to:</p>
+                    
+                    <p class="email">info@kxpower.co.uk</p>
+                    
+                    <p class="note">KX Power is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 职位卡片滚动显示动画和展开/收起功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureItems = document.querySelectorAll('.feature-item');
+            const introCard = document.querySelector('.intro-card');
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            const jobCards = document.querySelectorAll('.job-card');
+            const applicationModal = document.getElementById('applicationModal');
+            const modalJobTitle = document.getElementById('modalJobTitle');
+            const closeModal = document.querySelector('.application-modal .close-modal');
+            
+            // 初始化特色项的样式
+            featureItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+            });
+            
+            // 初始化介绍卡片的样式
+            if (introCard) {
+                introCard.style.opacity = '0';
+                introCard.style.transform = 'translateY(30px)';
+                introCard.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
+            }
+            
+            // 初始化职位卡片的样式 - 优化动画效果
+            jobCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(15px)'; // 减小上移距离
+                card.style.transition = 'all 0.4s ease'; // 更平滑的过渡效果
+                // 减少延迟时间，使卡片更自然地出现
+                card.style.transitionDelay = `${0.05 + index * 0.07}s`;
+            });
+            
+            // 检查元素是否在视口内
+            const isElementInViewport = (el) => {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 && // 稍微提前触发
+                    rect.bottom >= 0
+                );
+            };
+            
+            // 添加滚动动画和可见性检查
+            const handleScrollAnimation = () => {
+                // 为特色项添加滚动动画
+                featureItems.forEach((item, index) => {
+                    if (isElementInViewport(item) && !item.classList.contains('visible')) {
+                        item.classList.add('visible');
+                        setTimeout(() => {
+                            item.style.transform = 'translateY(0)';
+                            item.style.opacity = '1';
+                        }, index * 100); // 依次显示
+                    }
+                });
+                
+                // 为介绍卡片添加滚动动画
+                if (introCard && isElementInViewport(introCard) && !introCard.classList.contains('visible')) {
+                    introCard.classList.add('visible');
+                    introCard.style.opacity = '1';
+                    introCard.style.transform = 'translateY(0)';
+                }
+                
+                // 为职位卡片添加滚动动画 - 平滑淡入效果
+                jobCards.forEach((card, index) => {
+                    if (isElementInViewport(card) && !card.classList.contains('visible')) {
+                        card.classList.add('visible');
+                        // 使用setTimeout让过渡更平滑
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 70); // 使用更短的延迟
+                    }
+                });
+            };
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // 页面加载时执行一次
+            setTimeout(handleScrollAnimation, 100);
+            
+            // 为"Read more"按钮添加点击事件
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const detailsElement = document.getElementById(targetId);
+                    
+                    // 切换展开/收起状态
+                    if (detailsElement.classList.contains('expanded')) {
+                        detailsElement.classList.remove('expanded');
+                        this.classList.remove('expanded');
+                        this.innerHTML = 'Read more <i class="fas fa-chevron-down"></i>';
+                    } else {
+                        detailsElement.classList.add('expanded');
+                        this.classList.add('expanded');
+                        this.innerHTML = 'Read less <i class="fas fa-chevron-up"></i>';
+                    }
+                });
+            });
+            
+            // 为应聘按钮添加点击事件
+            const applyButtons = document.querySelectorAll('.apply-btn');
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const jobTitle = this.closest('.job-card').querySelector('.job-title').textContent;
+                    
+                    // 设置模态框标题并显示
+                    modalJobTitle.textContent = jobTitle;
+                    applicationModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    
+                    // 在弹窗打开时添加ESC键关闭功能
+                    document.addEventListener('keydown', escKeyCloseApplication);
+                });
+            });
+            
+            // 点击关闭按钮关闭弹窗
+            if (closeModal) {
+                closeModal.addEventListener('click', closeApplicationModal);
+            }
+            
+            // 点击弹窗外部区域关闭弹窗
+            applicationModal.addEventListener('click', function(e) {
+                if (e.target === applicationModal) {
+                    closeApplicationModal();
+                }
+            });
+            
+            // 关闭申请弹窗的函数
+            function closeApplicationModal() {
+                applicationModal.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+                
+                // 移除ESC键关闭事件监听
+                document.removeEventListener('keydown', escKeyCloseApplication);
+            }
+            
+            // ESC键关闭申请弹窗
+            function escKeyCloseApplication(e) {
+                if (e.key === 'Escape' || e.keyCode === 27) {
+                    closeApplicationModal();
+                }
+            }
+
+            // 添加职位卡片的悬停效果增强
+            jobCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // 找到当前卡片内的Apply按钮并增强效果
+                    const applyBtn = this.querySelector('.apply-btn');
+                    if (applyBtn) {
+                        applyBtn.style.transform = 'translateY(-4px)';
+                        applyBtn.style.boxShadow = '0 8px 20px rgba(0, 56, 101, 0.25)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    // 鼠标离开时恢复按钮效果
+                    const applyBtn = this.querySelector('.apply-btn');
+                    if (applyBtn) {
+                        applyBtn.style.transform = '';
+                        applyBtn.style.boxShadow = '';
+                    }
+                });
+            });
+            
+            // 返回顶部按钮功能
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // 监听滚动事件来显示/隐藏按钮
+            window.addEventListener('scroll', function() {
+                // 当滚动超过300px时显示按钮
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // 点击按钮返回顶部
+            backToTopBtn.addEventListener('click', function() {
+                // 使用平滑滚动返回顶部
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
