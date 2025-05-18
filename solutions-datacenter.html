@@ -63,11 +63,11 @@
         .intro-container h2 {
             font-size: 34px;
             color: #003865;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 5px;
             background: linear-gradient(90deg, #003865, #0066b3, #003865);
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -78,14 +78,7 @@
         }
         
         .intro-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
+            content: none;
         }
         
         @keyframes gradient-text {
@@ -105,14 +98,14 @@
             line-height: 1.7;
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
-            text-align: left;
+            text-align: justify;
             max-width: 900px;
             margin: 0 auto 30px;
             position: relative;
             z-index: 1;
         }
         
-        /* 服务列表部分 - 使用圆角矩形设计，与BESS页面一致 */
+        /* 服务列表部分 - 使用圆角矩形设计，与BESS页面一致*/
         .service-list {
             display: flex;
             flex-wrap: wrap;
@@ -170,7 +163,7 @@
             color: #003865;
         }
         
-        /* 统一服务项动画效果 */
+        /* 统一服务项动画效果*/
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -187,7 +180,7 @@
             opacity: 0;
         }
         
-        /* 错开各个服务项目的动画时间 */
+        /* 错开各个服务项目的动画时间*/
         .service-item:nth-child(1) { animation-delay: 0.1s; }
         .service-item:nth-child(2) { animation-delay: 0.15s; }
         .service-item:nth-child(3) { animation-delay: 0.2s; }
@@ -262,7 +255,7 @@
         .section-heading h2 {
             font-size: 32px;
             color: #003865;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
@@ -270,14 +263,7 @@
         }
         
         .section-heading h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
+            content: none;
         }
         
         /* 数据中心项目信息卡片 */
@@ -341,13 +327,7 @@
         }
         
         .datacenter-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
+            content: none;
         }
         
         .datacenter-specs {
@@ -404,7 +384,7 @@
             color: #555;
             margin-top: auto;
             font-family: "Calibri", sans-serif;
-            text-align: left;
+            text-align: justify;
         }
         
         /* 图片画廊样式 */
@@ -552,7 +532,7 @@
             font-family: "Calibri", sans-serif;
         }
         
-        /* 响应式调整 */
+        /* 响应式调整*/
         @media (max-width: 1200px) {
             .service-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -748,12 +728,12 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- 导航-->
     <header>
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -777,7 +757,7 @@
 
     <!-- 标题部分 -->
     <section class="datacenter-title-section">
-        <!-- 空部分，保持与其他页面结构一致 -->
+        <!-- 空部分，保持与其他页面结构一致-->
     </section>
 
     <!-- 数据中心介绍部分 -->
@@ -925,7 +905,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -971,7 +951,7 @@
                 <h3>Changing your preferences</h3>
                 <p>If you'd like to change your web, contact or marketing preferences, you can do so at any time. Simply contact us at <a href="mailto:info@kxpower.co.uk">info@kxpower.co.uk</a> to request the necessary amendments.</p>
                 
-                <!-- 剩余隐私政策内容与其他页面保持一致 -->
+                <!-- 剩余隐私政策内容与其他页面保持一致-->
             </div>
         </div>
     </div>
@@ -997,7 +977,7 @@
                 datacenterCard.style.transition = 'all 0.5s ease';
             }
             
-            // 检查元素是否在视口内
+            // 检查元素是否在视口
             const isElementInViewport = (el) => {
                 const rect = el.getBoundingClientRect();
                 return (
@@ -1032,7 +1012,7 @@
             // 返回顶部按钮功能
             const backToTopBtn = document.getElementById('backToTop');
             
-            // 监听滚动事件来显示/隐藏按钮
+            // 监听滚动事件来显示隐藏按钮
             window.addEventListener('scroll', function() {
                 // 当滚动超过300px时显示按钮
                 if (window.scrollY > 300) {

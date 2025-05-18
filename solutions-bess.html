@@ -78,14 +78,7 @@
         }
         
         .intro-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
+            content: none;
         }
         
         @keyframes gradient-text {
@@ -105,7 +98,7 @@
             line-height: 1.7;
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
-            text-align: left;
+            text-align: justify;
             max-width: 900px;
             margin: 0 auto 30px;
             position: relative;
@@ -353,24 +346,18 @@
         }
         
         .section-heading h2 {
-            font-size: 32px;
+            font-size: 34px;
             color: #003865;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            text-align: center;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
-            display: inline-block;
+            padding-bottom: 15px;
         }
         
-        .section-heading h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
+        .section-heading h2::after {
+            content: none;
         }
         
         /* 项目卡片样式 - 修改为截图风格 */
@@ -781,7 +768,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -812,7 +799,7 @@
     <section class="bess-intro">
         <div class="intro-container">
             <h2>BESS & Solar Solutions</h2>
-            <p class="intro-text">KX Power is a leading developer and asset manager of utility-scale battery energy storage (BESS) and solar projects across Europe, the Middle East and Africa. Power networks and electricity markets are evolving rapidly: to meet net-zero-by-2050 targets in the UK, the EU, GCC, African and many other jurisdictions, intermittent wind and solar will need to account for almost 60% of generation by 2030. Utility-scale battery storage is therefore critical to enabling renewables to connect to — and stabilise — the grid.</p>
+            <p class="intro-text">KX Power is a leading developer and asset manager of utility-scale battery energy storage (BESS) and solar projects across Europe, the Middle East and Africa. Power networks and electricity markets are evolving rapidly: to meet net-zero-by-2050 targets in the UK, the EU, GCC, African and many other jurisdictions, intermittent wind and solar will need to account for almost 60% of generation by 2030. Utility-scale battery storage is therefore critical to enabling renewables to connect to and stabilise the grid.</p>
             <p class="intro-text">We take a truly holistic approach to every project, from initial concept through to handover and beyond, including:</p>
             
             <!-- 服务列表 -->
@@ -868,10 +855,10 @@
                 <!-- 项目1: Mannington -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/4. Solutions/BESS/项目1 BESS_Mannington_01.png" alt="BESS Project Mannington">
+                        <img src="assets/4. Solutions/BESS/项目1 BESS_Mannington_01.png" alt="BESS Project South England">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">BESS Project Mannington</h3>
+                        <h3 class="project-title">BESS Project South England</h3>
                         
                         <div class="project-meta">
                             <div class="project-meta-item">
@@ -901,10 +888,10 @@
                 <!-- 项目2: Immingham -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/4. Solutions/BESS/项目2 ：BESS_Immingham_02.png" alt="BESS Project Immingham">
+                        <img src="assets/4. Solutions/BESS/项目2 ：BESS_Immingham_02.png" alt="BESS Project Midland">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">BESS Project Immingham</h3>
+                        <h3 class="project-title">BESS Project Midland</h3>
                         
                         <div class="project-meta">
                             <div class="project-meta-item">
@@ -934,10 +921,10 @@
                 <!-- 项目3: Ayr -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/4. Solutions/BESS/项目3：BESS Project Ayr-01.png" alt="BESS Project Ayr">
+                        <img src="assets/4. Solutions/BESS/项目3：BESS Project Ayr-01.png" alt="BESS Project Scotland">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">BESS Project Ayr</h3>
+                        <h3 class="project-title">BESS Project Scotland</h3>
                         
                         <div class="project-meta">
                             <div class="project-meta-item">
@@ -967,10 +954,10 @@
                 <!-- 项目4: South Africa O&M -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/4. Solutions/BESS/项目4：O&M_South Africa.png" alt="South Africa O&M Services">
+                        <img src="assets/4. Solutions/BESS/项目4：O&M_South Africa.png" alt="South Africa Northeast">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">South Africa O&M Services</h3>
+                        <h3 class="project-title">South Africa Northeast</h3>
                         <div class="project-meta">
                             <div class="project-meta-item">
                                 <i class="fas fa-cogs"></i>
@@ -1043,7 +1030,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -1153,7 +1140,7 @@
             // 返回顶部按钮功能
             const backToTopBtn = document.getElementById('backToTop');
             
-            // 监听滚动事件来显示/隐藏按钮
+            // 监听滚动事件来显示隐藏按钮
             window.addEventListener('scroll', function() {
                 // 当滚动超过300px时显示按钮
                 if (window.scrollY > 300) {

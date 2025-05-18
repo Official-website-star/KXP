@@ -20,9 +20,9 @@
         }
         
         .career-intro {
-            padding: 80px 5% 60px; /* 增加顶部内边距，弥补移除标题后的空间 */
+            padding: 60px 5% 40px; /* 减少顶部和底部内边距 */
             background-color: #fff;
-            text-align: center;
+            text-align: left;
             position: relative;
             overflow: hidden;
         }
@@ -63,28 +63,12 @@
         .intro-container h2 {
             font-size: 34px; /* 稍微增大主标题字体 */
             color: #003865;
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* 从25px减少到20px */
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
-            padding-bottom: 15px;
-            background: linear-gradient(90deg, #003865, #0066b3, #003865);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 3s linear infinite;
+            padding-bottom: 5px; /* 从15px减少到5px */
             z-index: 1;
-        }
-        
-        .intro-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
         }
         
         @keyframes gradient-text {
@@ -105,8 +89,8 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 56, 101, 0.05);
             padding: 25px 30px;
-            margin: 0 auto 40px;
-            max-width: 1200px;
+            margin: 0 auto 30px; /* 从40px减少到30px */
+            max-width: 1000px; /* 从1200px减少到1000px，与其他页面保持一致 */
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
@@ -134,11 +118,14 @@
             line-height: 1.7;
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
-            text-align: center;
+            text-align: left; /* 从center改为left对齐 */
             position: relative;
             z-index: 1;
             width: 100%;
             margin: 0;
+            max-width: 1000px; /* 添加最大宽度限制，与其他页面保持一致 */
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .intro-features {
@@ -149,7 +136,7 @@
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px; /* 从1200px改为1000px，与intro-card宽度一致 */
             margin-left: auto;
             margin-right: auto;
         }
@@ -205,7 +192,7 @@
         
         /* 职位列表部分 - 新样式 */
         .career-jobs {
-            padding: 45px 5% 70px;
+            padding: 40px 5% 60px; /* 从45px 5% 70px减少到40px 5% 60px */
             background-color: #f8f9fa;
             background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
             position: relative;
@@ -261,36 +248,24 @@
         }
         
         .section-heading {
-            text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px; /* 从50px减少到30px */
         }
         
         .section-heading h2 {
             font-size: 32px;
             color: #003865;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* 从30px减少到20px */
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
             display: inline-block;
         }
         
-        .section-heading h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
-        }
-        
         /* 职位卡片列表 - 全新设计 */
         .job-listings {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px; /* 从30px减少到25px */
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -326,7 +301,7 @@
         }
         
         .job-header {
-            padding: 30px 35px;
+            padding: 25px 30px; /* 从30px 35px减少到25px 30px */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -415,7 +390,7 @@
         }
         
         .job-description {
-            padding: 25px 35px;
+            padding: 25px 30px; /* 从30px 35px减少到25px 30px */
             position: relative;
             z-index: 1;
             border-bottom: 1px solid rgba(0, 56, 101, 0.08);
@@ -455,10 +430,10 @@
         }
         
         .job-details {
-            padding: 0 35px;
             max-height: 0;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 0 30px; /* 从0 35px减少到0 30px */
             position: relative;
             z-index: 1;
             background-color: #fff;
@@ -466,7 +441,8 @@
         
         .job-details.expanded {
             max-height: 2000px;
-            padding: 25px 35px 30px;
+            padding: 25px 30px; /* 从25px 35px减少到25px 30px */
+            border-top: 1px solid rgba(0, 56, 101, 0.08);
         }
         
         .job-details h4 {
@@ -610,6 +586,7 @@
             
             .intro-card {
                 padding: 20px 25px;
+                margin-bottom: 25px; /* 添加减小的底部边距 */
             }
             
             .job-title {
@@ -617,43 +594,54 @@
             }
             
             .intro-container {
-                padding: 30px;
+                padding: 25px; /* 从30px减少到25px */
+            }
+            
+            .section-heading {
+                margin-bottom: 25px; /* 添加减小的下边距 */
             }
         }
         
         @media (max-width: 768px) {
             .career-intro {
-                padding: 70px 5% 40px;
+                padding: 60px 5% 35px; /* 从70px 5% 40px减少到60px 5% 35px */
             }
             
             .intro-container {
-                padding: 25px;
+                padding: 20px; /* 从25px减少到20px */
             }
             
             .intro-container h2,
             .section-heading h2 {
                 font-size: 26px;
+                margin-bottom: 15px; /* 添加减小的边距 */
             }
             
             .intro-text {
                 font-size: 16px;
                 text-align: center;
+                margin-bottom: 15px; /* 添加减小的边距 */
             }
             
             .feature-item {
                 width: 100%;
                 max-width: 300px;
+                margin-bottom: 15px; /* 从20px减少到15px */
             }
             
             .career-intro,
             .career-jobs {
-                padding: 40px 5%;
+                padding: 35px 5%; /* 从40px 5%减少到35px 5% */
             }
             
             .job-header, 
             .job-description,
             .job-details.expanded {
                 padding: 20px;
+            }
+            
+            .job-listings {
+                gap: 20px; /* 从25px减少到20px */
             }
         }
         
@@ -1013,7 +1001,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -1045,9 +1033,9 @@
     <!-- 职业介绍部分 - 调整为两端对齐的卡片 -->
     <section class="career-intro">
         <div class="intro-container">
-            <h2>Power Your Career with KX Power</h2>
+            <h2 style="color: #003865; text-align: center;">Power Your Career with KX Power</h2>
             <div class="intro-card">
-                <p class="intro-text">At KX Power, we're not just building energy storage systems – we're building a sustainable future. Join our dynamic team of experts passionate about renewable energy innovation and make a meaningful impact on the global transition to clean energy. We value creativity, dedication, and a collaborative spirit as we expand our operations across the UK, Europe, Middle East, and Africa.</p>
+                <p class="intro-text">At KX Power, we're not just building energy storage systems — we're building a sustainable future. Join our dynamic team of experts passionate about renewable energy innovation and make a meaningful impact on the global transition to clean energy. We value creativity, dedication, and a collaborative spirit as we expand our operations across the UK, Europe, Middle East, and Africa.</p>
             </div>
             
             <!-- 工作特点 - 水平排列 -->
@@ -1091,7 +1079,7 @@
     <section class="career-jobs">
         <div class="jobs-container">
             <div class="section-heading">
-                <h2>Current Opportunities</h2>
+                <h2 style="color: #003865;">Current Opportunities</h2>
             </div>
             
             <div class="job-listings">
@@ -1138,7 +1126,7 @@
                             <li>Review the project specific constraints, specify technical requirements and collaborate with the EPC/contractors to optimise the design and engineering solutions (BoP and ICP)</li>
                             <li>Work closely with Project Manager to monitor project development process and review technical deliveries throughout the design, construction and commissioning</li>
                             <li>Supervision of Factory Acceptance Test (FAT) and/or Site Acceptance Test (SAT)</li>
-                            <li>Attend technical meetings with key stakeholders (EPC, NG/DNO, Technical Due Diligence, …)</li>
+                            <li>Attend technical meetings with key stakeholders (EPC, NG/DNO, Technical Due Diligence, etc.)</li>
                             <li>Technical assessment of new BESS projects in the development portfolio</li>
                         </ul>
                         
@@ -1283,7 +1271,7 @@
                             <li>Supervision of Factory Acceptance Test (FAT) and/or Site Acceptance Test (SAT)</li>
                             <li>Work as technical interface of all counterparties and ensure the technical clarity</li>
                             <li>Work closely with the Project Manager to monitor project development process and review technical deliveries</li>
-                            <li>Attend technical meetings with key stakeholders (EPC, DNO, Technical Due Diligence, …)</li>
+                            <li>Attend technical meetings with key stakeholders (EPC, DNO, Technical Due Diligence, etc.)</li>
                             <li>Technical assessment of new BESS projects in the development portfolio</li>
                         </ul>
                         
@@ -1291,7 +1279,7 @@
                         <ul>
                             <li>3-5 years design experience in utility scale battery storage plant or utility LV, HV, or EHV substation</li>
                             <li>Bachelor or Master degree in engineering (with a specialism in Electrical Power Engineering, Battery Storage or equivalent)</li>
-                            <li>Proven technical knowledge of the utility scale battery storage system such as battery and MV system selection, augmentation plan optimisation, layout and SLD design, auxiliary power sizing calculation, power cable rating, relay protection, control/monitoring system, fire suppression system, grounding design, lightning protection, …</li>
+                            <li>Proven technical knowledge of the utility scale battery storage system such as battery and MV system selection, augmentation plan optimisation, layout and SLD design, auxiliary power sizing calculation, power cable rating, relay protection, control/monitoring system, fire suppression system, grounding design, lightning protection, etc.</li>
                             <li>Familiarity and experience with G99 standards and CDM regulations</li>
                             <li>Ability of keeping up to date with new products/technology and technology advancements in industry</li>
                             <li>Commercial awareness of system design and engineering solutions</li>
@@ -1347,7 +1335,7 @@
                             <li>Preparing and analyzing various project documents for the project due diligence process</li>
                             <li>Review the project specific constraints, for land ownership and insurance/risk aspects, negotiate with landowners or insurers for conditions and mitigants</li>
                             <li>Working with solicitors to resolve issues raised during project development process</li>
-                            <li>Attend meetings with key stakeholders (Funder, EPC, DNO, Technical Due Diligence, …)</li>
+                            <li>Attend meetings with key stakeholders (Funder, EPC, DNO, Technical Due Diligence, etc.)</li>
                             <li>Financial assessment of new BESS projects in the development portfolio</li>
                         </ul>
                         
@@ -1486,7 +1474,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -1625,7 +1613,7 @@
                         setTimeout(() => {
                             card.style.opacity = '1';
                             card.style.transform = 'translateY(0)';
-                        }, index * 70); // 使用更短的延迟
+                        }, index * 70); // 使用更短的延迟时间
                     }
                 });
             };
@@ -1636,7 +1624,7 @@
             // 页面加载时执行一次
             setTimeout(handleScrollAnimation, 100);
             
-            // 为"Read more"按钮添加点击事件
+            // "Read more"按钮添加点击事件
             readMoreButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.getAttribute('data-target');
@@ -1724,7 +1712,7 @@
             // 返回顶部按钮功能
             const backToTopBtn = document.getElementById('backToTop');
             
-            // 监听滚动事件来显示/隐藏按钮
+            // 监听滚动事件来显示隐藏按钮
             window.addEventListener('scroll', function() {
                 // 当滚动超过300px时显示按钮
                 if (window.scrollY > 300) {

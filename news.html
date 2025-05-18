@@ -19,7 +19,7 @@
         }
         
         .news-intro {
-            padding: 80px 5% 60px;
+            padding: 70px 5% 50px;
             background-color: #fff;
             text-align: center;
             position: relative;
@@ -62,28 +62,12 @@
         .intro-container h2 {
             font-size: 34px;
             color: #003865;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
-            padding-bottom: 15px;
-            background: linear-gradient(90deg, #003865, #0066b3, #003865);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 3s linear infinite;
+            padding-bottom: 5px;
             z-index: 1;
-        }
-        
-        .intro-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
         }
         
         .intro-text {
@@ -92,8 +76,8 @@
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin: 0 auto 20px;
             animation: fadeIn 1s forwards ease-out;
             position: relative;
             z-index: 1;
@@ -113,7 +97,7 @@
         
         /* 新闻列表部分 */
         .news-section {
-            padding: 45px 5% 70px;
+            padding: 40px 5% 60px;
             background-color: #f8f9fa;
             background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
             position: relative;
@@ -170,35 +154,24 @@
         
         .section-heading {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-heading h2 {
             font-size: 32px;
             color: #003865;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
             display: inline-block;
         }
         
-        .section-heading h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
-        }
-        
         /* 新闻卡片设计 */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -252,7 +225,7 @@
         }
         
         .news-content {
-            padding: 25px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -260,9 +233,9 @@
         
         .news-title {
             font-size: 22px;
-            font-weight: 500;
+            font-weight: normal;
             color: #003865;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             line-height: 1.4;
             font-family: "Georgia", serif;
         }
@@ -271,9 +244,10 @@
             font-size: 16px;
             line-height: 1.6;
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-grow: 1;
             font-family: "Calibri", sans-serif;
+            text-align: left;
         }
         
         .read-more-link {
@@ -445,6 +419,7 @@
         }
         
         /* 响应式调整 */
+        /* 响应式调整 */
         @media (max-width: 1200px) {
             .news-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -582,7 +557,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -612,7 +587,7 @@
     <!-- 新闻介绍部分 -->
     <section class="news-intro">
         <div class="intro-container">
-            <h2>Latest News & Updates</h2>
+            <h2 style="color: #003865;">Latest News & Updates</h2>
             <p class="intro-text">Stay informed with the latest developments, announcements, and industry insights from KX Power. Discover how we are transforming the energy storage landscape through innovation and strategic partnerships.</p>
         </div>
     </section>
@@ -621,11 +596,24 @@
     <section class="news-section">
         <div class="news-container">
             <div class="section-heading">
-                <h2>Industry Updates</h2>
+                <h2 style="color: #003865;">Industry Updates</h2>
             </div>
             
             <div class="news-grid">
-                <!-- 新闻1 -->
+                <!-- 新闻1 - 新添加的新闻 -->
+                <div class="news-card">
+                    <div class="news-image">
+                        <span class="news-date">July 1, 2025</span>
+                        <img src="assets/5. News/储能-1.jpg" alt="KX Power Expands Global Footprint">
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">KX Power Expands Global Footprint with Integrated Construction Management and O&M Services</h3>
+                        <p class="news-excerpt">KX Power announces the expansion of its service offerings into new international markets, reinforcing its position as a global player in the delivery, operation, and optimization of energy and infrastructure assets. The company now offers comprehensive Construction Management and O&M services across key global regions.</p>
+                        <a href="#" class="read-more-link" data-news="news4">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 原有新闻1 -->
                 <div class="news-card">
                     <div class="news-image">
                         <span class="news-date">January 25, 2023</span>
@@ -638,7 +626,7 @@
                     </div>
                 </div>
                 
-                <!-- 新闻2 -->
+                <!-- 原有新闻2 -->
                 <div class="news-card">
                     <div class="news-image">
                         <span class="news-date">June 7, 2022</span>
@@ -651,7 +639,7 @@
                     </div>
                 </div>
                 
-                <!-- 新闻3 -->
+                <!-- 原有新闻3 -->
                 <div class="news-card">
                     <div class="news-image">
                         <span class="news-date">November 10, 2022</span>
@@ -764,6 +752,36 @@
         </div>
     </div>
 
+    <!-- 新闻4详情 - 新添加的新闻详情 -->
+    <div class="news-modal" id="news4-modal">
+        <div class="news-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="news-modal-header">
+                <span class="news-modal-date">July 1, 2025</span>
+                <img src="assets/5. News/储能-1.jpg" alt="KX Power Expands Global Footprint">
+            </div>
+            <div class="news-modal-body">
+                <h2 class="news-modal-title">KX Power Expands Global Footprint with Integrated Construction Management and O&M Services</h2>
+                
+                <p><strong>London, UK, 1 July, 2025</strong> – KX Power, a leading energy and infrastructure solutions provider, is proud to announce the expansion of its service offerings into new international markets, reinforcing its position as a global player in the delivery, operation, and optimization of energy and infrastructure assets.</p>
+                
+                <p>With this expansion, KX Power now offers comprehensive Construction Management (CM) and Operation & Maintenance (O&M) services across key global regions including North America, Europe, Asia-Pacific, and Latin America. Backed by a team of over 150 industry professionals, KX Power is uniquely positioned to support the full lifecycle of infrastructure projects, from groundbreaking to long-term performance management.</p>
+                
+                <p>"This milestone marks a new chapter for KX Power," said Zhe Zhang, CEO of KX Power. "As the world rapidly transitions to low-carbon energy and digital infrastructure, our global expansion allows us to bring our technical excellence, financial acumen, and operational reliability to a wider client base."</p>
+                
+                <p>KX Power's Construction Management services ensure that complex infrastructure projects—including renewable energy facilities, battery energy storage systems (BESS), and high-performance data centers—are delivered safely, on time, and within budget. Leveraging advanced project controls and an integrated delivery approach, the company ensures visibility and accountability throughout every project phase.</p>
+                
+                <p>On the operational side, KX Power's O&M services are built around a proprietary, digital-first platform that supports predictive maintenance, real-time monitoring, and performance optimization. These capabilities enable clients to maximize uptime, reduce lifecycle costs, and achieve consistent returns on infrastructure investments.</p>
+                
+                <p>The expansion also supports KX Power's mission to accelerate the deployment of sustainable infrastructure, aligning with global energy transition goals and increasing demand for resilient digital infrastructure.</p>
+                
+                <h3>About KX Power</h3>
+                
+                <p>KX Power is a global energy and infrastructure services firm specializing in the development, construction, and operation of renewable energy systems, battery storage, and data-driven infrastructure assets. With a multidisciplinary team and a proven track record, KX Power delivers integrated solutions that drive long-term value and sustainability across the asset lifecycle.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- 页脚 -->
     <footer>
         <div class="footer-container">
@@ -795,7 +813,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -937,7 +955,7 @@
             // 返回顶部按钮功能
             const backToTopBtn = document.getElementById('backToTop');
             
-            // 监听滚动事件来显示/隐藏按钮
+            // 监听滚动事件来显示隐藏按钮
             window.addEventListener('scroll', function() {
                 // 当滚动超过300px时显示按钮
                 if (window.scrollY > 300) {

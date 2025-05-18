@@ -11,26 +11,19 @@
     <style>
         /* Team页面特定样式 */
         .team-intro {
-            padding: 70px 5% 50px; /* 减少顶部和底部的内边距 */
+            padding: 50px 5% 40px;
             background-color: #fff;
-            margin-top: 70px; /* 保持导航栏下方的间距 */
+            margin-top: 70px;
             position: relative;
             overflow: hidden;
         }
 
         .team-intro::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 56, 101, 0.03), transparent 70%);
-            z-index: 0;
+            display: none; /* 隐藏背景渐变效果 */
         }
-
+        
         .intro-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
             position: relative;
@@ -41,42 +34,20 @@
         .intro-container h1 {
             font-size: 36px;
             color: #003865;
-            margin-bottom: 20px; /* 减少标题下方的间距 */
+            margin-bottom: 15px; /* 从20px减少到15px */
             font-weight: 500;
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
-            background: linear-gradient(90deg, #003865, #0066b3, #003865);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 3s linear infinite;
+            padding-bottom: 5px; /* 从15px减少到5px */
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.7s forwards ease-out, gradient-text 3s linear infinite;
-        }
-
-        .intro-container h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: #003865;
-            animation: line-expand 1.5s forwards ease-out;
-            animation-delay: 0.5s;
+            animation: fadeInUp 0.7s forwards ease-out;
         }
 
         @keyframes gradient-text {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
-        }
-
-        @keyframes line-expand {
-            0% { width: 0; }
-            100% { width: 100%; }
         }
 
         .intro-text {
@@ -98,8 +69,8 @@
             background-color: #fff;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 56, 101, 0.08);
-            padding: 25px 40px; /* 减少卡片的上下内边距 */
-            margin: 10px auto 30px; /* 减少卡片上下的外边距 */
+            padding: 30px 35px;
+            margin: 0 auto 20px;
             max-width: 1200px;
             position: relative;
             overflow: hidden;
@@ -112,60 +83,48 @@
         }
         
         .team-intro-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 56, 101, 0.03) 0%, transparent 100%);
-            z-index: 0;
+            display: none; /* 隐藏背景渐变效果 */
         }
         
         .team-intro-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 56, 101, 0.03), transparent 70%);
-            z-index: 0;
-            opacity: 0.7;
-            animation: pulse-glow 8s infinite alternate ease-in-out;
+            display: none; /* 隐藏背景效果 */
         }
         
-        .team-intro-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 56, 101, 0.12);
+        .team-intro-text-container {
+            display: block; /* 从flex改为block布局 */
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px; /* 添加最大宽度限制 */
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .team-intro-text {
-            font-size: 19px;
+        .team-intro-text-full {
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 18px; /* 主要段落字体稍大 */
             line-height: 1.7;
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
-            text-align: justify; /* 两端对齐 */
+            text-align: left; /* 从center改为left对齐 */
             position: relative;
             z-index: 1;
-            width: 100%;
-            max-width: 1120px;
-            margin: 0 auto;
-            hyphens: auto; /* 添加自动连字符 */
-            text-justify: inter-word; /* 强化单词间的间距调整 */
         }
         
         .team-intro-icons {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
+            margin-top: 30px; /* 增加与文字的间距 */
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1000px; /* 与文字区域宽度一致 */
             margin-left: auto;
             margin-right: auto;
-            padding: 0 20px;
+            padding: 0;
+            border-top: 1px solid rgba(0, 56, 101, 0.08); /* 添加上边框分隔 */
+            padding-top: 30px; /* 添加上内边距 */
         }
         
         .intro-icon-item {
@@ -231,6 +190,11 @@
             color: #0066b3;
         }
         
+        .team-intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 56, 101, 0.12);
+        }
+        
         @media (max-width: 992px) {
             .team-member {
                 width: calc(33.33% - 20px);
@@ -288,10 +252,12 @@
             .intro-container h1 {
                 font-size: 28px;
                 margin-bottom: 15px; /* 在手机上减少标题下方的间距 */
+                text-align: left;
             }
             
-            .intro-text {
-                font-size: 17px;
+            .team-intro-text-full {
+                font-size: 16px;
+                line-height: 1.6;
                 text-align: left;
             }
             
@@ -299,10 +265,9 @@
                 height: 220px;
             }
             
-            .team-intro-text {
-                text-align: left; /* 小屏幕上使用左对齐 */
-                font-size: 17px;
-                hyphens: none;
+            .team-intro-text-container {
+                display: block;
+                margin-bottom: 20px;
             }
             
             .intro-icon-item {
@@ -752,7 +717,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -777,9 +742,13 @@
     <!-- 团队介绍 -->
     <section class="team-intro">
         <div class="intro-container">
-            <h1 style="margin-bottom: 10px;">Our Team</h1>
             <div class="team-intro-card">
-                <p class="team-intro-text">Our team includes key personnel with backgrounds in renewable energy and financial engineering, who can leverage their strong industrial experience in BESS, Renewable Energy Generation, Energy Management System and substantial connections in the wider energy storage industry to obtain support from suppliers, optimizers, contractors, and technical advisors.</p>
+                <h1 style="margin-bottom: 20px; color: #003865; text-align: left;">Our Team</h1>
+                <div class="team-intro-text-container">
+                    <p class="team-intro-text-full">At the heart of our success is a diverse and globally connected team of over 150 professionals with deep expertise across renewable energy, financial engineering, and large-scale infrastructure. With team members based across the Americas, Europe, Asia, and Africa, we bring a truly global perspective to every project we deliver.</p>
+                    <p class="team-intro-text-full">Our leadership and technical experts combine decades of experience in developing, financing, and managing complex infrastructure assets—including utility-scale renewable energy projects, energy storage systems, and high-performance data centers. We understand the unique demands of both the technical and financial dimensions of infrastructure, enabling us to deliver integrated solutions that are bankable, scalable, and sustainable.</p>
+                    <p class="team-intro-text-full">From early-stage project development and investment structuring to asset optimization and lifecycle management, our team operates with precision, agility, and an unwavering commitment to value creation for our clients and partners. We are delivering innovative solutions that accelerate the global energy transition and digital infrastructure growth.</p>
+                </div>
                 
                 <div class="team-intro-icons">
                     <div class="intro-icon-item">
@@ -817,7 +786,7 @@
     <!-- 团队成员展示 -->
     <section class="team-members">
         <div class="team-grid">
-            <!-- 第一排5位管理层 -->
+            <!-- 第一位管理层 -->
             <div class="team-member">
                 <div class="member-image">
                     <img src="assets/3. Team/01_Zhe Zhang.png" alt="Zhe Zhang">
@@ -883,7 +852,7 @@
                 </div>
             </div>
             
-            <!-- 第二排5位管理层 -->
+            <!-- 第二位管理层 -->
             <div class="team-member">
                 <div class="member-image">
                     <img src="assets/3. Team/06_Claire Sherlock.jpg" alt="Claire Sherlock">
@@ -934,7 +903,7 @@
                 </div>
             </div>
             
-            <!-- 第三排5位管理层 -->
+            <!-- 第三位管理层 -->
             <div class="team-member">
                 <div class="member-image">
                     <img src="assets/3. Team/11_Raymond Seager.jpg" alt="Raymond Seager">
@@ -985,7 +954,7 @@
                 </div>
             </div>
             
-            <!-- 最后3位管理层 -->
+            <!-- 最后一位管理层 -->
             <div class="team-member">
                 <div class="member-image">
                     <img src="assets/3. Team/16_Stephen Markscheid.jpg" alt="Stephen Markscheid">
@@ -1049,7 +1018,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -1255,7 +1224,7 @@
             // 初始运行一次，确保页面加载时可见元素会显示
             handleScrollAnimation();
             
-            // 添加团队成员卡片的鼠标移动效果，增强3D感
+            // 添加团队成员卡片的鼠标移动效果，增强3D效果
             const teamMembers = document.querySelectorAll('.team-member');
             
             teamMembers.forEach(member => {
@@ -1307,7 +1276,7 @@
                         const deltaX = (x - centerX) / centerX;
                         const deltaY = (y - centerY) / centerY;
                         
-                        // 轻微的3D效果
+                        // 轻微3D效果
                         teamIntroCard.style.transform = `perspective(1000px) rotateY(${deltaX * 2}deg) rotateX(${-deltaY * 2}deg) translateY(-5px)`;
                         
                         // 添加光影效果

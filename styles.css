@@ -103,7 +103,7 @@ nav ul li a {
     text-transform: capitalize;
     position: relative;
     padding: 8px 0;
-    color: #003865;
+    color: #000000;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -111,32 +111,32 @@ nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 0;
     bottom: 0;
     left: 0;
-    background-color: #003865;
+    background-color: transparent;
     transition: width 0.35s cubic-bezier(0.58, 0.3, 0.005, 1);
     transform-origin: left;
 }
 
 nav ul li a:hover {
-    color: #00509d;
-    text-shadow: 0 0 1px rgba(0, 80, 157, 0.1);
+    color: #333333;
+    text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.5);
 }
 
 nav ul li a:hover::after {
-    width: 100%;
+    width: 0;
 }
 
 nav ul li a.active {
-    color: #003865;
+    color: #000000;
     font-weight: 600;
 }
 
 nav ul li a.active::after {
-    width: 100%;
-    height: 3px;
-    background-color: #003865;
+    width: 0;
+    height: 0;
+    background-color: transparent;
 }
 
 /* 英雄图片部分 */
@@ -274,6 +274,7 @@ nav ul li a.active::after {
 .section-title {
     text-align: center;
     margin-bottom: 50px;
+    position: relative;
 }
 
 .section-title h2 {
@@ -284,23 +285,59 @@ nav ul li a.active::after {
 }
 
 .section-line {
-    height: 2px;
-    background-color: #003865;
-    max-width: 800px;
-    margin: 0 auto;
     position: relative;
+    height: 4px;
+    background-color: transparent;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+}
+
+.section-line::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 30px;
+    background-color: #003865;
+    transform-origin: center top;
+    animation: lineGrow 1.2s ease-out forwards;
 }
 
 .section-line::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100%;
+    top: 20px;
+    width: 0;
+    height: 2px;
     background-color: #003865;
-    opacity: 0.7;
+    transform-origin: center;
+    animation: lineExpand 1.2s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes lineGrow {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    100% {
+        height: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 90%;
+        opacity: 1;
+    }
 }
 
 .project-container {
@@ -308,7 +345,7 @@ nav ul li a.active::after {
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1400px;
-    margin: 50px auto 0; /* 增加上方间距，将卡片向下移动 */
+    margin: 50px auto 0;
     gap: 30px;
 }
 
@@ -325,69 +362,88 @@ nav ul li a.active::after {
     transform: translateY(20px);
     opacity: 0;
     animation: fadeInUp 0.7s forwards ease-out;
-    border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .project-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 56, 101, 0.15);
-    border-color: #003865;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 56, 101, 0.15);
     z-index: 1;
 }
 
 .card-content {
-    padding: 40px 20px;
+    padding: 45px 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.card-icon {
-    font-size: 36px;
-    color: #003865;
-    margin-bottom: 20px;
-    transition: all 0.4s ease;
-    height: 50px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.project-card:hover .card-icon {
-    transform: scale(1.15) translateY(-5px);
-    color: #0056b3;
+    transition: all 0.4s ease;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
 }
 
 .project-card:hover .card-content {
-    background-color: rgba(0, 56, 101, 0.02);
+    background: linear-gradient(to bottom, #ffffff, #f0f5f9);
+}
+
+.card-icon {
+    font-size: 40px;
+    color: #003865;
+    margin-bottom: 25px;
+    transition: all 0.4s ease;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 56, 101, 0.05);
+    border-radius: 50%;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 56, 101, 0.1);
+}
+
+.project-card:hover .card-icon {
+    transform: scale(1.15) translateY(-8px);
+    color: #0056b3;
+    background-color: rgba(0, 56, 101, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 56, 101, 0.15);
 }
 
 .project-card h3 {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     color: #003865;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    font-family: "Calibri", sans-serif;
 }
 
 .project-card:hover h3 {
     color: #0056b3;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 
 .project-card .number {
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 500;
     color: #003865;
     transition: all 0.4s ease;
+    position: relative;
+    margin-top: 10px;
+    text-shadow: none;
 }
 
 .project-card:hover .number {
     color: #0056b3;
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+/* 数字动画效果 */
+.count-number {
+    display: inline-block;
+    transition: color 0.3s ease;
 }
 
 /* 为每个卡片添加渐入动画延迟 */
@@ -407,7 +463,7 @@ nav ul li a.active::after {
 @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(50px);
     }
     100% {
         opacity: 1;
@@ -415,32 +471,30 @@ nav ul li a.active::after {
     }
 }
 
-/* 添加卡片内容的渐变效果 */
+/* 添加卡片内容的顶部边框效果 */
 .project-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #003865;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
+    width: 0;
+    height: 0;
+    background: transparent;
     opacity: 0;
 }
 
 .project-card:hover::before {
-    transform: scaleX(1);
-    opacity: 1;
+    opacity: 0;
 }
 
 /* 全球业务部分 */
 .global-business {
     padding: 50px 5% 60px;
-    background-color: #f8f9fa;
+    background-color: #fff;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .global-business::before {
@@ -449,8 +503,8 @@ nav ul li a.active::after {
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, rgba(0, 56, 101, 0.1), rgba(0, 56, 101, 0.05), rgba(0, 56, 101, 0));
+    height: 1px;
+    background-color: rgba(0, 56, 101, 0.1);
 }
 
 .business-container {
@@ -579,12 +633,13 @@ nav ul li a.active::after {
 
 /* 页脚样式 */
 footer {
-    background-color: #003865;
-    color: #fff;
-    padding: 50px 5% 20px; /* 减少上方内边距 */
+    background-color: #fff;
+    color: #333;
+    padding: 50px 5% 25px;
     font-family: "Calibri", sans-serif;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid #eaeaea;
 }
 
 footer::before {
@@ -594,7 +649,7 @@ footer::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle at top right, rgba(0, 56, 101, 0.02) 0%, rgba(0, 0, 0, 0) 60%);
     pointer-events: none;
 }
 
@@ -604,32 +659,36 @@ footer::before {
     flex-wrap: wrap;
     max-width: 1400px;
     margin: 0 auto;
-    padding-bottom: 25px; /* 减少底部内边距 */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     position: relative;
-    gap: 30px; /* 添加间隙控制 */
+    gap: 35px;
 }
 
 .footer-section {
     flex: 1;
-    margin-right: 0; /* 使用gap来控制间距 */
+    margin-right: 0;
     min-width: 220px;
     position: relative;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards;
+    padding: 0 10px;
 }
 
 .footer-section:nth-child(1) {
     animation-delay: 0.1s;
+    flex: 0.8;
 }
 
 .footer-section:nth-child(2) {
     animation-delay: 0.3s;
+    flex: 1.2;
 }
 
 .footer-section:nth-child(3) {
     animation-delay: 0.5s;
+    flex: 0.8;
 }
 
 .footer-section:last-child {
@@ -637,37 +696,34 @@ footer::before {
 }
 
 .footer-section h3 {
-    font-size: 22px; /* 稍微减小标题字体 */
+    font-size: 26px;
     font-weight: 500;
-    margin-bottom: 20px; /* 减少标题下方间距 */
+    margin-bottom: 18px;
     letter-spacing: 0.5px;
     position: relative;
     display: inline-block;
-    color: #fff; /* 保持纯白色 */
+    color: #000;
+    position: relative;
 }
 
-.footer-section h3::after {
+.footer-section h3::before {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: 0;
     left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.4);
-    transition: width 0.3s ease;
-}
-
-.footer-section:hover h3::after {
-    width: 100%;
+    width: 0;
+    height: 0;
+    background-color: transparent;
 }
 
 .quick-links {
     list-style: none;
     padding: 0;
+    margin-left: 0;
 }
 
 .quick-links li {
-    margin-bottom: 10px; /* 减少间距 */
+    margin-bottom: 10px;
     transform: translateX(-10px);
     opacity: 0;
     animation: fadeInRight 0.5s forwards;
@@ -680,16 +736,17 @@ footer::before {
 .quick-links li:nth-child(5) { animation-delay: 0.6s; }
 
 .quick-links li a {
-    color: rgba(255, 255, 255, 0.8); /* 改为浅灰色 */
+    color: #000;
     font-size: 18px;
     transition: all 0.3s ease;
     text-decoration: none;
     position: relative;
     padding-left: 0;
+    display: inline-block;
 }
 
 .quick-links li a:hover {
-    color: #fff; /* 悬停时变为纯白色 */
+    color: #003865;
     padding-left: 8px;
 }
 
@@ -709,12 +766,13 @@ footer::before {
 .contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 14px; /* 减少间距 */
+    margin-bottom: 15px;
     font-size: 18px;
     transform: translateX(-10px);
     opacity: 0;
     animation: fadeInRight 0.5s forwards;
-    color: rgba(255, 255, 255, 0.8); /* 改为浅灰色 */
+    color: #000;
+    line-height: 1.5;
 }
 
 .contact-item:nth-child(2) { animation-delay: 0.3s; }
@@ -724,7 +782,7 @@ footer::before {
 .contact-item i {
     margin-right: 16px;
     margin-top: 4px;
-    color: rgba(255, 255, 255, 0.9); /* 图标颜色稍微亮一些 */
+    color: #003865;
     font-size: 18px;
     min-width: 20px;
     transition: transform 0.3s ease, color 0.3s ease;
@@ -732,18 +790,19 @@ footer::before {
 
 .contact-item:hover i {
     transform: scale(1.2);
-    color: #fff;
+    color: #0056b3;
 }
 
 .contact-item:hover {
-    color: #fff; /* 悬停时整个项目变成白色 */
+    color: #333;
 }
 
 .footer-email {
-    color: rgba(255, 255, 255, 0.8); /* 改为浅灰色 */
+    color: #000;
     text-decoration: none;
     position: relative;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .footer-email::after {
@@ -753,14 +812,14 @@ footer::before {
     height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 56, 101, 0.3);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
 }
 
 .footer-email:hover {
-    color: #fff; /* 悬停时变为纯白色 */
+    color: #003865;
 }
 
 .footer-email:hover::after {
@@ -775,14 +834,14 @@ footer::before {
 }
 
 .footer-logo {
-    height: 53px; /* 原来是80px，缩小1/3后约为53px */
-    filter: brightness(0) invert(1);
+    height: 60px;
+    filter: none;
     transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .footer-logo:hover {
     transform: scale(1.05);
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(0 0 5px rgba(0, 56, 101, 0.2));
 }
 
 .footer-bottom {
@@ -790,10 +849,10 @@ footer::before {
     justify-content: space-between;
     align-items: center;
     max-width: 1400px;
-    margin: 15px auto 0; /* 减少上边距 */
-    font-size: 15px; /* 稍微减小字体 */
+    margin: 20px auto 0;
+    font-size: 15px;
     position: relative;
-    color: rgba(255, 255, 255, 0.7); /* 改为浅灰色 */
+    color: #000;
 }
 
 .footer-right {
@@ -802,11 +861,12 @@ footer::before {
 }
 
 .privacy-policy {
-    color: rgba(255, 255, 255, 0.7); /* 改为浅灰色 */
-    margin-right: 20px;
+    color: #000;
+    margin-right: 25px;
     text-decoration: none;
     transition: color 0.3s ease;
     position: relative;
+    font-weight: 500;
 }
 
 .privacy-policy::after {
@@ -816,14 +876,14 @@ footer::before {
     height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 56, 101, 0.3);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
 }
 
 .privacy-policy:hover {
-    color: #fff; /* 悬停时变为纯白色 */
+    color: #003865;
 }
 
 .privacy-policy:hover::after {
@@ -832,47 +892,37 @@ footer::before {
 }
 
 .social-icon {
-    font-size: 22px; /* 稍微减小尺寸 */
-    color: #fff;
+    font-size: 22px;
+    color: #003865;
     transition: all 0.3s ease;
-    padding: 7px;
+    padding: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 56, 101, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
 }
 
 .social-icon:hover {
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #003865;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    box-shadow: 0 5px 15px rgba(0, 56, 101, 0.2);
 }
 
 @media (max-width: 992px) {
     .footer-container {
         flex-direction: column;
-        padding-bottom: 20px; /* 进一步减少内边距 */
-        gap: 20px; /* 减小间隙 */
+        padding-bottom: 30px;
+        gap: 40px;
     }
     
     .footer-section {
-        margin-bottom: 0; /* 使用gap来控制间距 */
+        margin-bottom: 0;
         width: 100%;
+        padding: 0;
     }
     
     .logo-section {
@@ -880,34 +930,40 @@ footer::before {
     }
     
     .footer-logo {
-        height: 53px; /* 保持一致的尺寸 */
+        height: 55px;
     }
 }
 
 @media (max-width: 768px) {
     footer {
-        padding: 35px 5% 15px; /* 减少内边距 */
+        padding: 40px 5% 20px;
     }
     
     .footer-section h3 {
-        font-size: 20px; /* 减小标题字体 */
-        margin-bottom: 16px; /* 减少标题下方间距 */
+        font-size: 24px;
+        margin-bottom: 14px;
     }
     
     .quick-links li {
-        margin-bottom: 8px; /* 进一步减少间距 */
+        margin-bottom: 8px;
     }
     
     .footer-logo {
-        height: 47px; /* 保持比例 */
+        height: 50px;
     }
     
     .footer-bottom {
-        margin-top: 12px; /* 减少上边距 */
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .footer-right {
-        margin-top: 10px; /* 减少间距 */
+        margin-top: 15px;
+    }
+    
+    .contact-item {
+        margin-bottom: 15px;
     }
     
     .footer-nav {
@@ -925,28 +981,39 @@ footer::before {
 }
 
 @media (max-width: 480px) {
+    footer {
+        padding: 40px 5% 20px;
+    }
+    
     .footer-section h3 {
-        font-size: 19px; /* 更小的字体 */
-        margin-bottom: 14px; /* 更小的下边距 */
+        font-size: 22px;
+        margin-bottom: 12px;
     }
     
     .quick-links li a,
     .contact-item {
         font-size: 16px;
-        color: rgba(255, 255, 255, 0.8); /* 保持颜色一致 */
+        color: #000;
     }
     
     .contact-item i {
         font-size: 16px;
-        color: rgba(255, 255, 255, 0.9); /* 保持颜色一致 */
+        color: #003865;
     }
     
     .footer-logo {
-        height: 40px; /* 继续按比例缩小 */
+        height: 45px;
     }
     
     .footer-bottom p, .footer-bottom a {
-        margin-bottom: 8px; /* 减少间距 */
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+    
+    .social-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
     }
 }
 
@@ -978,9 +1045,29 @@ footer::before {
     }
     
     .section-line {
-        max-width: 650px;
+        max-width: 700px;
     }
     
+    .section-line::before {
+        height: 25px;
+    }
+    
+    .section-line::after {
+        top: 15px;
+    }
+    
+    @keyframes lineGrow {
+        100% {
+            height: 25px;
+        }
+    }
+    
+    @keyframes lineExpand {
+        100% {
+            width: 85%;
+        }
+    }
+
     .project-container {
         margin-top: 35px;
         gap: 25px;
@@ -1138,6 +1225,26 @@ footer::before {
         max-width: 90%;
     }
     
+    .section-line::before {
+        height: 22px;
+    }
+    
+    .section-line::after {
+        top: 12px;
+    }
+    
+    @keyframes lineGrow {
+        100% {
+            height: 22px;
+        }
+    }
+    
+    @keyframes lineExpand {
+        100% {
+            width: 80%;
+        }
+    }
+    
     .project-card {
         width: 100%;
         max-width: 400px;
@@ -1149,7 +1256,7 @@ footer::before {
     }
     
     .project-card:hover {
-        transform: translateY(-8px) scale(1.01);
+        transform: translateY(-3px);
     }
     
     .navbar {
@@ -1195,7 +1302,7 @@ footer::before {
         padding: 25px 30px;
         max-width: 92%;
         backdrop-filter: blur(2px);
-        transform: translateX(0) !important; /* 禁用在移动设备上的鼠标移动效果 */
+        transform: translateX(0) !important;
     }
     
     .hero-text h1 {
@@ -1292,7 +1399,7 @@ footer::before {
     .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 12px; /* 减少上边距 */
+        margin-top: 12px;
     }
     
     .footer-bottom p, .footer-bottom a {
@@ -1304,6 +1411,30 @@ footer::before {
     .section-title h2 {
         font-size: 24px;
         margin-bottom: 15px;
+    }
+    
+    .section-line {
+        max-width: 95%;
+    }
+    
+    .section-line::before {
+        height: 18px;
+    }
+    
+    .section-line::after {
+        top: 8px;
+    }
+    
+    @keyframes lineGrow {
+        100% {
+            height: 18px;
+        }
+    }
+    
+    @keyframes lineExpand {
+        100% {
+            width: 75%;
+        }
     }
     
     .project-container {
@@ -1330,7 +1461,7 @@ footer::before {
     }
     
     .project-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-2px);
     }
     
     .hero {
@@ -1350,7 +1481,7 @@ footer::before {
     }
     
     .hero-text h1 br {
-        display: none; /* 在最小屏幕上取消换行，让文本自然换行 */
+        display: none;
     }
     
     .hero-text p {
@@ -1494,7 +1625,6 @@ body.nav-open .mobile-menu-toggle span:nth-child(3) {
         opacity: 1;
     }
     
-    /* 为每个菜单项添加延迟动画 */
     body.nav-open nav ul li:nth-child(1) { transition-delay: 0.1s; }
     body.nav-open nav ul li:nth-child(2) { transition-delay: 0.15s; }
     body.nav-open nav ul li:nth-child(3) { transition-delay: 0.2s; }
@@ -2357,4 +2487,20 @@ body.nav-open .mobile-menu-toggle span:nth-child(3) {
 
 .hero-text:hover .hero-button {
     transform: translateY(-3px);
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 统一所有页面的h2标题颜色 */
+h2 {
+    color: #003865;
 } 

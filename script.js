@@ -10,6 +10,48 @@ document.addEventListener('DOMContentLoaded', function() {
         checkElementsInViewport();
     });
     
+    // 数字计数动画函数
+    function animateNumbers() {
+        const countElements = document.querySelectorAll('.count-number');
+        
+        countElements.forEach(element => {
+            const targetValue = parseFloat(element.getAttribute('data-value'));
+            const duration = 2000; // 动画持续时间（毫秒）
+            const frameRate = 1000 / 60; // 每秒60帧
+            const totalFrames = duration / frameRate;
+            let frame = 0;
+            
+            // 为小数点后的数字设置固定位数
+            const decimalPlaces = (targetValue.toString().split('.')[1] || '').length;
+            
+            // 动画帧函数
+            function updateNumber() {
+                if (frame < totalFrames) {
+                    // 使用缓动函数使动画更自然
+                    const progress = easeOutQuart(frame / totalFrames);
+                    const currentValue = progress * targetValue;
+                    
+                    // 根据原始值的小数位数格式化显示
+                    element.textContent = currentValue.toFixed(decimalPlaces);
+                    
+                    frame++;
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    // 确保最终值精确匹配目标值
+                    element.textContent = targetValue.toFixed(decimalPlaces);
+                }
+            }
+            
+            // 缓动函数：慢开始快结束
+            function easeOutQuart(t) {
+                return 1 - Math.pow(1 - t, 4);
+            }
+            
+            // 开始动画
+            updateNumber();
+        });
+    }
+    
     // 检测元素是否在视口内并添加动画效果
     function checkElementsInViewport() {
         // 选择要监听的元素
@@ -35,6 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (!element.classList.contains('business-map')) {
                     // 对于其他元素（非地图），正常添加可见类
                     element.classList.add('visible');
+                }
+                
+                // 如果项目卡片出现在视口中，触发数字动画
+                if (element.classList.contains('project-card') && !element.classList.contains('animated')) {
+                    element.classList.add('animated');
+                    // 延迟启动动画，让卡片先出现
+                    setTimeout(() => {
+                        if (document.querySelectorAll('.project-card.animated').length === document.querySelectorAll('.project-card').length) {
+                            animateNumbers();
+                        }
+                    }, 500);
                 }
             }
         });

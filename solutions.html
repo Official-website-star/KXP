@@ -19,7 +19,7 @@
         }
         
         .solutions-intro {
-            padding: 80px 5% 60px;
+            padding: 70px 5% 50px;
             background-color: #fff;
             text-align: left;
             position: relative;
@@ -63,29 +63,13 @@
         .intro-container h2 {
             font-size: 34px;
             color: #003865;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
-            padding-bottom: 15px;
-            background: linear-gradient(90deg, #003865, #0066b3, #003865);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 3s linear infinite;
+            padding-bottom: 5px;
             z-index: 1;
             text-align: center;
-        }
-        
-        .intro-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
         }
         
         @keyframes gradient-text {
@@ -106,8 +90,8 @@
             color: #333;
             font-family: "Calibri", "Times New Roman", sans-serif;
             text-align: left;
-            max-width: 900px;
-            margin: 0 auto 30px;
+            max-width: 1000px;
+            margin: 0 auto 20px;
             position: relative;
             z-index: 1;
         }
@@ -115,9 +99,9 @@
         /* 主图展示部分 */
         .solutions-image {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             height: 400px;
-            margin: 30px auto 0;
+            margin: 20px auto 0;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 56, 101, 0.15);
@@ -214,7 +198,7 @@
         
         /* 解决方案列表部分 */
         .solutions-section {
-            padding: 45px 5% 70px;
+            padding: 40px 5% 60px;
             background-color: #f8f9fa;
             background-image: linear-gradient(to bottom, #f8f9fa, #f2f4f7);
             position: relative;
@@ -271,35 +255,24 @@
         
         .section-heading {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-heading h2 {
             font-size: 32px;
             color: #003865;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 500;
             font-family: "Georgia", serif;
             position: relative;
             display: inline-block;
         }
         
-        .section-heading h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #003865, #0066b3);
-        }
-        
         /* 解决方案卡片设计 */
         .solutions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -357,7 +330,7 @@
         }
         
         .solution-content {
-            padding: 25px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -367,7 +340,7 @@
             font-size: 22px;
             font-weight: normal;
             color: #003865;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             line-height: 1.4;
             font-family: "Georgia", serif;
         }
@@ -376,7 +349,7 @@
             font-size: 16px;
             line-height: 1.6;
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-grow: 1;
             font-family: "Calibri", sans-serif;
             text-align: left;
@@ -436,45 +409,57 @@
             }
             
             .intro-container {
-                padding: 30px;
+                padding: 25px;
             }
             
             .solutions-grid {
                 grid-template-columns: 1fr;
                 max-width: 600px;
+                gap: 25px;
+            }
+            
+            .section-heading {
+                margin-bottom: 25px;
             }
         }
         
         @media (max-width: 768px) {
             .solutions-intro {
-                padding: 70px 5% 40px;
+                padding: 60px 5% 35px;
             }
             
             .intro-container {
-                padding: 25px;
+                padding: 20px;
             }
             
             .intro-container h2,
             .section-heading h2 {
                 font-size: 26px;
+                margin-bottom: 15px;
             }
             
             .intro-text {
                 font-size: 16px;
                 text-align: left;
+                margin-bottom: 15px;
             }
             
             .solutions-image {
                 height: 280px;
+                margin: 15px auto 0;
             }
             
             .solutions-intro,
             .solutions-section {
-                padding: 40px 5%;
+                padding: 35px 5%;
             }
             
             .solution-title {
                 font-size: 19px;
+            }
+            
+            .section-heading {
+                margin-bottom: 20px;
             }
         }
         
@@ -558,7 +543,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo">
+                    <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo">
                 </a>
             </div>
             <div class="mobile-menu-toggle">
@@ -664,7 +649,7 @@
             </div>
             
             <div class="footer-section logo-section">
-                <img src="assets/1. Home/KX Power Logo.png" alt="KX Power Logo" class="footer-logo">
+                <img src="assets/1. Home/KX Power Logo-HD.png" alt="KX Power Logo" class="footer-logo">
             </div>
         </div>
         
@@ -800,7 +785,7 @@
             // 返回顶部按钮功能
             const backToTopBtn = document.getElementById('backToTop');
             
-            // 监听滚动事件来显示/隐藏按钮
+            // 监听滚动事件来显示隐藏按钮
             window.addEventListener('scroll', function() {
                 // 当滚动超过300px时显示按钮
                 if (window.scrollY > 300) {
